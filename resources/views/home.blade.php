@@ -56,7 +56,7 @@
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="index.html#about">SIGN IN</a>
+      <a class="btn-getstarted" href="{{ url('/login') }}">LOGIN </a>
 
     </div>
   </header>
@@ -346,7 +346,7 @@
 
     </section><!-- /Features Details Section -->
 
- 
+
 
     <!-- More Features Section -->
     <section id="more-features" class="more-features section">
@@ -628,7 +628,7 @@
             <span class="sitename">QuickStart</span>
           </a>
           <div class="footer-contact pt-3">
-            <p>Jl. Airlangga No.4 - 6, Airlangga, Kec. Gubeng, Surabaya, Jawa Timur 60115</p>   
+            <p>Jl. Airlangga No.4 - 6, Airlangga, Kec. Gubeng, Surabaya, Jawa Timur 60115</p>
             <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
             <p><strong>Email:</strong> <span>info@example.com</span></p>
           </div>
