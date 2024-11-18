@@ -24,6 +24,7 @@ return new class extends Migration
             $table->string('password');
             $table->string('phone_number', 15)->nullable();
             $table->string('institution')->nullable();
+            $table->string('imageProfil')->nullable();
             $table->foreignId('role_id')->nullable()->constrained('roles')->nullOnDelete(); // foreign key yang sesuai dengan kolom 'id' di roles
             $table->rememberToken();
             $table->timestamps();
