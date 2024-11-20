@@ -19,6 +19,16 @@ class UserSeeder extends Seeder
             'updated_at' => now(),
         ]);
 
+        DB::table('users')->insert([
+        'name' => 'admin',
+        'email' => 'admin@gmail.com',
+        'password' => Hash::make('12345678'),  // Pastikan menggunakan hash untuk password
+        'role_id' => 2,  // Menggunakan role_id = 1 untuk user biasa
+        'created_at' => now(),
+        'updated_at' => now(),
+    ]);
+
+
         // Anda bisa menambahkan lebih banyak user dengan role_id yang berbeda jika diperlukan
         // DB::table('users')->insert([...]);
     }

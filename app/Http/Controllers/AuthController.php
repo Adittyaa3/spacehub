@@ -70,7 +70,7 @@ class AuthController extends Controller
         if ($user->role_id == 1) {
             return redirect()->route('user.dashboard'); // Dashboard user
         } elseif ($user->role_id == 2) {
-            return redirect()->route('admin.dashboard'); // Dashboard admin
+            return redirect()->route('roles.index'); // Dashboard admin
         }
     }
 
@@ -91,4 +91,19 @@ class AuthController extends Controller
         // Redirect the user to the homepage (or any page you prefer)
         return redirect('/');
     }
+
+    // ini untuk chart
+    
+
+public function chartData()
+{
+    $data = DB::table('users')
+        ->select('roles.name as role', DB::raw('count(users.id) as user_count'))
+        ->join('roles', 'users.role_id', '=', 'roles.id')
+        ->groupBy('roles.name')
+        ->get();
+
+    return view('chart', compact('data'));
+}
+
 }
