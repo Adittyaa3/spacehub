@@ -4,6 +4,10 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\AuthController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\RoomController;
+use App\Http\Controllers\BookingController;
+use App\Http\Controllers\PaymentController;
+use App\Http\Controllers\CartController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -64,4 +68,43 @@ Route::middleware('auth')->group(function () {
         // ini untuk masing" chart
         Route::get('chart', [UserController::class, 'chartData'])->name('chart');
 
+
+        // Menampilkan daftar semua rooms
+        Route::get('rooms', [RoomController::class, 'index'])->name('rooms.index');
+
+        // Menampilkan form untuk membuat room baru
+        Route::get('rooms/create', [RoomController::class, 'create'])->name('rooms.create');
+
+        // Menyimpan room baru
+        Route::post('rooms', [RoomController::class, 'store'])->name('rooms.store');
+
+        // Menampilkan form untuk mengedit room tertentu
+        Route::get('rooms/{room}/edit', [RoomController::class, 'edit'])->name('rooms.edit');
+
+        // Memperbarui room tertentu
+        Route::put('rooms/{room}', [RoomController::class, 'update'])->name('rooms.update');
+
+        // Menghapus room tertentu
+        Route::delete('rooms/{room}', [RoomController::class, 'destroy'])->name('rooms.destroy');
+
+
+
+
+
+        Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');
+        Route::get('bookings/create', [BookingController::class, 'create'])->name('bookings.create');
+        Route::post('bookings', [BookingController::class, 'store'])->name('bookings.store');
+        Route::get('bookings/{booking}/edit', [BookingController::class, 'edit'])->name('bookings.edit');
+        Route::put('bookings/{booking}', [BookingController::class, 'update'])->name('bookings.update');
+        Route::delete('bookings/{booking}', [BookingController::class, 'destroy'])->name('bookings.destroy');
+
+        Route::get('carts', [CartController::class, 'index'])->name('carts.index');
+Route::post('carts/{roomId}', [CartController::class, 'addToCart'])->name('carts.add');
+Route::delete('carts/{cartId}', [CartController::class, 'removeFromCart'])->name('carts.remove');
+Route::post('carts/checkout', [CartController::class, 'checkout'])->name('carts.checkout');
+
+
+        Route::get('payments/create/{booking_id}', [PaymentController::class, 'create'])->name('payments.create');
+        Route::post('payments', [PaymentController::class, 'store'])->name('payments.store');
+        Route::post('payments/callback', [PaymentController::class, 'callback'])->name('payments.callback');
 });
