@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('title', 'Payment')
+@section('title', 'Payment for Booking')
 
 @section('content')
 <div class="col-12">
@@ -22,8 +22,20 @@
                     </div>
                     <div class="col-md-6">
                         <div class="form-group">
+                            <label for="start_time" class="form-control-label">Start Time</label>
+                            <input class="form-control" id="start_time" type="datetime-local" name="start_time" value="{{ $booking->start_time }}" disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="end_time" class="form-control-label">End Time</label>
+                            <input class="form-control" id="end_time" type="datetime-local" name="end_time" value="{{ $booking->end_time }}" disabled>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
                             <label for="amount" class="form-control-label">Amount</label>
-                            <input class="form-control" id="amount" type="number" name="amount" value="{{ $booking->room_price }}" disabled>
+                            <input class="form-control" id="amount" type="number" name="amount" value="{{ $booking->price }}" readonly>
                         </div>
                     </div>
                 </div>

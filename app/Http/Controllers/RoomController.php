@@ -2,15 +2,15 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class RoomController extends Controller
 {
     public function index()
     {
-        $rooms = DB::table('rooms')->where('status', '!=', 'D')->get();
+        $rooms = DB::table('rooms')->get();
         return view('rooms.index', compact('rooms'));
     }
 
@@ -29,11 +29,13 @@ class RoomController extends Controller
             'status' => 'required|in:A,B',
         ]);
 
+        $minutes_in_hour = 60;
+
         DB::table('rooms')->insert([
             'name' => $request->name,
             'description' => $request->description,
             'capacity' => $request->capacity,
-            'price' => $request->price,
+            'price' => $request->price, // Simpan harga per menit
             'status' => $request->status,
             'user_id' => Auth::id(),
             'created_at' => now(),
@@ -59,11 +61,13 @@ class RoomController extends Controller
             'status' => 'required|in:A,B',
         ]);
 
+        $minutes_in_hour = 60;
+
         DB::table('rooms')->where('id', $id)->update([
             'name' => $request->name,
             'description' => $request->description,
             'capacity' => $request->capacity,
-            'price' => $request->price,
+            'price' => $request->price , // Simpan harga per menit
             'status' => $request->status,
             'user_id' => Auth::id(),
             'updated_at' => now()

@@ -42,6 +42,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade');
+            $table->integer('price');
             $table->timestamp('start_time');
             $table->timestamp('end_time');
             $table->char('status', 1)->default('P'); // 'P' untuk Pending, 'C' untuk Confirmed, 'D' untuk Deleted

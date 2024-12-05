@@ -15,39 +15,20 @@
     </div>
 </div>
 
-<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('midtrans.client_key') }}"></script>
+<script src="https://app.sandbox.midtrans.com/snap/snap.js" data-client-key="{{ config('services.midtrans.client_key') }}"></script>
 <script type="text/javascript">
     document.getElementById('pay-button').onclick = function () {
         snap.pay('{{ $snapToken }}', {
             onSuccess: function(result){
-                sendCallback(result);
+                window.location.href = '{{ route("payments.finish") }}?transaction_status=' + result.transaction_status + '&order_id=' + result.order_id + '&transaction_id=' + result.transaction_id + '&payment_type=' + result.payment_type;
             },
             onPending: function(result){
-                sendCallback(result);
+                window.location.href = '{{ route("payments.unfinish") }}?transaction_status=' + result.transaction_status + '&order_id=' + result.order_id + '&transaction_id=' + result.transaction_id + '&payment_type=' + result.payment_type;
             },
             onError: function(result){
-                sendCallback(result);
+                window.location.href = '{{ route("payments.error") }}';
             }
         });
     };
-
-    function sendCallback(result) {
-        fetch('{{ route("payments.callback") }}', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'X-CSRF-TOKEN': '{{ csrf_token() }}'
-            },
-            body: JSON.stringify(result)
-        }).then(response => {
-            if (response.ok) {
-                window.location.href = '{{ route("carts.index") }}';
-            } else {
-                console.error('Callback failed');
-            }
-        }).catch(error => {
-            console.error('Error:', error);
-        });
-    }
 </script>
 @endsection

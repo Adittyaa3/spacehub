@@ -104,7 +104,13 @@ Route::delete('carts/{cartId}', [CartController::class, 'removeFromCart'])->name
 Route::post('carts/checkout', [CartController::class, 'checkout'])->name('carts.checkout');
 
 
-        Route::get('payments/create/{booking_id}', [PaymentController::class, 'create'])->name('payments.create');
-        Route::post('payments', [PaymentController::class, 'store'])->name('payments.store');
-        Route::post('payments/callback', [PaymentController::class, 'callback'])->name('payments.callback');
+        // Route::get('payments/create/{booking_id}', [PaymentController::class, 'create'])->name('payments.create');
+        // Route::post('payments', [PaymentController::class, 'store'])->name('payments.store');
+        // Route::post('payments/callback', [PaymentController::class, 'callback'])->name('payments.callback');
+        Route::get('/payments/create/{booking_id}', [PaymentController::class, 'create'])->name('payments.create');
+Route::post('/payments/store', [PaymentController::class, 'store'])->name('payments.store');
+Route::post('/payments/callback', [PaymentController::class, 'callback'])->name('payments.callback');
+Route::get('/payments/finish', [PaymentController::class, 'finishPayment'])->name('payments.finish');
+Route::get('/payments/unfinish', [PaymentController::class, 'unfinishPayment'])->name('payments.unfinish');
+Route::get('/payments/error', [PaymentController::class, 'errorPayment'])->name('payments.error');
 });
