@@ -109,7 +109,7 @@ class BookingController extends Controller
         }
 
         // Hitung durasi dalam jam
-        $duration = $end_time->diffInHours($start_time);
+        $duration = $start_time->diffInHours($end_time);
 
         // Debugging: Log untuk memastikan durasi dan harga per jam benar
         Log::info('Duration: ' . $duration);
@@ -150,7 +150,7 @@ class BookingController extends Controller
 
         $expiredBookings = DB::table('bookings')
             ->where('end_time', '<', $now)
-            ->where('status', 'C') // Confirmed
+            ->where('status', 'C') // Confirmed 
             ->get();
 
         foreach ($expiredBookings as $booking) {

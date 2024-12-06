@@ -85,18 +85,72 @@ class UserController extends Controller
         return redirect()->route('users.index')->with('success', 'User deleted successfully.');
     }
 
+    public function chartData()
+    {
+        // Ambil data pengguna berdasarkan peran
+        $userRoles = DB::table('users')
+            ->select('roles.name as role', DB::raw('count(users.id) as user_count'))
+            ->join('roles', 'users.role_id', '=', 'roles.id')
+            ->groupBy('roles.name')
+            ->get();
+
+        // Konversi data pengguna ke format yang sesuai untuk Highcharts
+        $userRolesData = $userRoles->map(function ($role) {
+            return [
+                'name' => $role->role,
+                'y' => $role->user_count
+            ];
+        });
+
+        // Ambil data pembayaran dari tabel payments
+        $payments = DB::table('payments')
+            ->select(DB::raw('payment_type, COUNT(*) as count'))
+            ->groupBy('payment_type')
+            ->get();
+
+        // Konversi data pembayaran ke format yang sesuai untuk Highcharts
+        $paymentData = $payments->map(function ($payment) {
+            return [
+                'name' => $payment->payment_type,
+                'y' => $payment->count
+            ];
+        });
+
+        // Ambil data booking berdasarkan status
+        $bookings = DB::table('bookings')
+            ->select(DB::raw('status, COUNT(*) as count'))
+            ->groupBy('status')
+            ->get();
+
+        // Konversi data booking ke format yang sesuai untuk Highcharts
+        $bookingData = $bookings->map(function ($booking) {
+            return [
+                'name' => $booking->status,
+                'y' => $booking->count
+            ];
+        });
+
+        // Ambil data kamar berdasarkan status
+        $rooms = DB::table('rooms')
+            ->select(DB::raw('status, COUNT(*) as count'))
+            ->groupBy('status')
+            ->get();
+
+        // Konversi data kamar ke format yang sesuai untuk Highcharts
+        $roomData = $rooms->map(function ($room) {
+            return [
+                'name' => $room->status,
+                'y' => $room->count
+            ];
+        });
+
+        return view('users.dashboardAdmin', compact('userRolesData', 'paymentData', 'bookingData', 'roomData'));
+    }
 
 
-public function chartData()
-{
-    $data = DB::table('users')
-        ->select('roles.name as role', DB::raw('count(users.id) as user_count'))
-        ->join('roles', 'users.role_id', '=', 'roles.id')
-        ->groupBy('roles.name')
-        ->get();
 
-    return view('users.dashboardAdmin', compact('data'));
-}
+
+
 
 }
 

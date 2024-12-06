@@ -67,6 +67,8 @@ Route::middleware('auth')->group(function () {
 
         // ini untuk masing" chart
         Route::get('chart', [UserController::class, 'chartData'])->name('chart');
+        Route::get('dashboard/payment', [UserController::class, 'dashboardpayment'])->name('chart');
+
 
 
         // Menampilkan daftar semua rooms
