@@ -16,20 +16,33 @@ class BookingController extends Controller
             ->join('rooms', 'bookings.room_id', '=', 'rooms.id')
             ->join('users', 'bookings.user_id', '=', 'users.id')
             ->select('bookings.*', 'rooms.name as room_name', 'users.name as user_name')
-            ->where('bookings.status', '!=', 'D')
+            ->where('bookings.status', '!=', '')
             ->get();
 
         return view('bookings.index', compact('bookings'));
     }
 
-    public function create()
+    public function showRooms()
     {
-        $rooms = DB::table('rooms')->where('status', 'A')->get();
-        return view('bookings.create', compact('rooms'));
+        $rooms = DB::table('rooms')->get();
+        return view('bookings.showRooms', compact('rooms'));
     }
 
-    public function store(Request $request)
+    public function createBooking($roomId)
     {
+        $room = DB::table('rooms')->where('id', $roomId)->first();
+        return view('bookings.create', compact('room'));
+    }
+
+    public function storeBooking(Request $request)
+    {
+        $request->validate([
+            'room_id' => 'required|exists:rooms,id',
+            'start_time' => 'required|date',
+            'end_time' => 'required|date|after:start_time',
+            'price' => 'required|numeric',
+        ]);
+
         $room = DB::table('rooms')->where('id', $request->room_id)->first();
 
         if ($room->status == 'B') {
@@ -55,30 +68,23 @@ class BookingController extends Controller
         // Hitung total harga berdasarkan durasi
         $price = $room->price * $duration;
 
-
         // Debugging: Lihat hasil perhitungan
         Log::info('Booking price calculated: ' . $price);
-
-        // Validasi harga
-        if ($price <= 0) {
-            Log::error('Invalid booking price: ' . $price);
-            return back()->withErrors(['error' => 'Invalid booking price.']);
-        }
 
         $bookingId = DB::table('bookings')->insertGetId([
             'user_id' => Auth::id(),
             'room_id' => $request->room_id,
+            'price' => $price,
             'start_time' => $start_time,
             'end_time' => $end_time,
-            'price' => $price,
             'status' => 'P', // Pending
             'created_at' => now(),
-            'updated_at' => now()
+            'updated_at' => now(),
         ]);
 
         // DB::table('rooms')->where('id', $request->room_id)->update([
         //     'status' => 'B', // Booked
-        //     'updated_at' => now()
+        //     'updated_at' => now(),
         // ]);
 
         return redirect()->route('payments.create', ['booking_id' => $bookingId]);
@@ -150,7 +156,7 @@ class BookingController extends Controller
 
         $expiredBookings = DB::table('bookings')
             ->where('end_time', '<', $now)
-            ->where('status', 'C') // Confirmed 
+            ->where('status', 'C') // Confirmed
             ->get();
 
         foreach ($expiredBookings as $booking) {
@@ -163,4 +169,29 @@ class BookingController extends Controller
                 ->update(['status' => 'A', 'updated_at' => now()]); // Available
         }
     }
+
+
+
+    public function transactionHistory()
+    {
+        $userId = Auth::id();
+        $transactions = DB::table('bookings')
+            ->join('rooms', 'bookings.room_id', '=', 'rooms.id')
+            ->join('payments', 'bookings.id', '=', 'payments.booking_id')
+            ->where('bookings.user_id', $userId)
+            ->whereIn('payments.status', ['settlement']) // Filter transaksi yang berhasil
+            ->select(
+                'bookings.*',
+                'rooms.name as room_name',
+                DB::raw('MAX(payments.payment_type) as payment_type'),
+                DB::raw('MAX(payments.amount) as amount'),
+                DB::raw('MAX(payments.status) as payment_status')
+            )
+            ->groupBy('bookings.id', 'rooms.name', 'bookings.user_id', 'bookings.room_id', 'bookings.price', 'bookings.start_time', 'bookings.end_time', 'bookings.status', 'bookings.created_at', 'bookings.updated_at')
+            ->get();
+
+        return view('transactions.history', compact('transactions'));
+    }
+
+
 }

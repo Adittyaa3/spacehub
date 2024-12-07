@@ -19,6 +19,7 @@
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Description</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Capacity</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Price</th>
+                            <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Image</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7">Status</th>
                             <th class="text-uppercase text-secondary text-xxs font-weight-bolder opacity-7 text-center">Action</th>
                         </tr>
@@ -27,16 +28,21 @@
                         @foreach ($rooms as $room)
                         <tr>
                             <td>
-                                <p class="text-xs font-weight-bold mb-0">{{ $room->name }}</p>
+                                <p class="text-xs font-weight-bold mb-0" style="margin-left: 20px">{{ $room->name }}</p>
                             </td>
                             <td>
-                                <p class="text-xs mb-0">{{ $room->description }}</p>
+                                <p class="text-xs mb-0"style="margin-left: 20px">{{ Str::limit($room->description, 15) }}</p>
                             </td>
                             <td>
-                                <p class="text-xs mb-0">{{ $room->capacity }}</p>
+                                <p class="text-xs mb-0"style="margin-left: 20px">{{ $room->capacity }}</p>
                             </td>
                             <td>
-                                <p class="text-xs mb-0">{{ $room->price }}</p>
+                                <p class="text-xs mb-0"style="margin-left: 20px">{{ $room->price }}</p>
+                            </td>
+                            <td>
+                                @if($room->image)
+                                <img src="{{ asset('storage/' . $room->image) }}" alt="{{ $room->name }}" width="50">
+                                @endif
                             </td>
                             <td>
                                 <p class="text-xs mb-0">{{ $room->status == 'A' ? 'Available' : 'Booked' }}</p>

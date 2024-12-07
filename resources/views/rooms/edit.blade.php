@@ -10,7 +10,7 @@
             <h6>Edit Room</h6>
         </div>
         <div class="card-body">
-            <form action="{{ route('rooms.update', $room->id) }}" method="POST">
+            <form action="{{ route('rooms.update', $room->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="row">
@@ -36,6 +36,21 @@
                         <div class="form-group">
                             <label for="price" class="form-control-label">Price</label>
                             <input class="form-control" id="price" type="number" name="price" value="{{ $room->price }}" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="image" class="form-control-label">Image</label>
+                            <input class="form-control" id="image" type="file" name="image">
+                            @if($room->image)
+                            <img src="{{ asset('storage/' . $room->image) }}" alt="{{ $room->name }}" width="100">
+                            @endif
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="facility" class="form-control-label">Facility</label>
+                            <input class="form-control" id="facility" type="text" name="facility" value="{{ $room->facility }}">
                         </div>
                     </div>
                     <div class="col-md-6">

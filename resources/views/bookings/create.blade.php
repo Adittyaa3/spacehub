@@ -21,16 +21,12 @@
             @endif
             <form action="{{ route('bookings.store') }}" method="POST">
                 @csrf
+                <input type="hidden" name="room_id" value="{{ $room->id }}">
                 <div class="row">
                     <div class="col-md-6">
                         <div class="form-group">
-                            <label for="room_id" class="form-control-label">Room</label>
-                            <select class="form-control" id="room_id" name="room_id" required>
-                                <option value="">Select Room</option>
-                                @foreach($rooms as $room)
-                                    <option value="{{ $room->id }}" data-price="{{ $room->price }}">{{ $room->name }}</option>
-                                @endforeach
-                            </select>
+                            <label for="room_name" class="form-control-label">Room</label>
+                            <input class="form-control" id="room_name" type="text" value="{{ $room->name }}" readonly>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -62,18 +58,16 @@
 
 <script>
 document.addEventListener('DOMContentLoaded', function () {
-    const roomSelect = document.getElementById('room_id');
     const startTimeInput = document.getElementById('start_time');
     const endTimeInput = document.getElementById('end_time');
     const priceInput = document.getElementById('price');
+    const roomPrice = {{ $room->price }};
 
     function calculatePrice() {
-        const roomOption = roomSelect.options[roomSelect.selectedIndex];
-        const roomPrice = parseFloat(roomOption.getAttribute('data-price'));
         const startTime = new Date(startTimeInput.value);
         const endTime = new Date(endTimeInput.value);
 
-        if (roomPrice && startTime && endTime && endTime > startTime) {
+        if (startTime && endTime && endTime > startTime) {
             const duration = (endTime - startTime) / (1000 * 60 * 60); // Duration in hours
             const price = roomPrice * duration;
             priceInput.value = price.toFixed(2);
@@ -82,7 +76,6 @@ document.addEventListener('DOMContentLoaded', function () {
         }
     }
 
-    roomSelect.addEventListener('change', calculatePrice);
     startTimeInput.addEventListener('change', calculatePrice);
     endTimeInput.addEventListener('change', calculatePrice);
 });

@@ -7,6 +7,7 @@
     <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('/assets2/img/apple-icon.png') }}">
     <link rel="icon" type="image/png" href="{{ '/assets2/img/favicon.png' }}">
     <title>@yield('tittle')</title>
+    @yield('styles')
     <!--     Fonts and icons     -->
   <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700" rel="stylesheet" />
   <!-- Nucleo Icons -->

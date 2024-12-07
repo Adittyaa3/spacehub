@@ -115,4 +115,11 @@ Route::post('/payments/callback', [PaymentController::class, 'callback'])->name(
 Route::get('/payments/finish', [PaymentController::class, 'finishPayment'])->name('payments.finish');
 Route::get('/payments/unfinish', [PaymentController::class, 'unfinishPayment'])->name('payments.unfinish');
 Route::get('/payments/error', [PaymentController::class, 'errorPayment'])->name('payments.error');
+
+Route::get('/transactions', [BookingController::class, 'transactionHistory'])->name('transactions.history');
+// Route::get('/bookings', [BookingController::class, 'showRooms'])->name('bookings.showRooms');
+// Route::post('/bookings/{room}', [BookingController::class, 'bookRoom'])->name('bookings.bookRoom');
+Route::get('/bookings', [BookingController::class, 'showRooms'])->name('bookings.showRooms');
+Route::get('/bookings/create/{room}', [BookingController::class, 'createBooking'])->name('bookings.create');
+Route::post('/bookings', [BookingController::class, 'storeBooking'])->name('bookings.store');
 });

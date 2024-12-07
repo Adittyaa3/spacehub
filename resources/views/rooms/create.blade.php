@@ -10,7 +10,7 @@
             <h6>Create New Room</h6>
         </div>
         <div class="card-body">
-            <form action="{{ route('rooms.store') }}" method="POST">
+            <form action="{{ route('rooms.store') }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
@@ -35,6 +35,18 @@
                         <div class="form-group">
                             <label for="price" class="form-control-label">Price</label>
                             <input class="form-control" id="price" type="number" name="price" required>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="image" class="form-control-label">Image</label>
+                            <input class="form-control" id="image" type="file" name="image">
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="facility" class="form-control-label">Facility</label>
+                            <input class="form-control" id="facility" type="text" name="facility">
                         </div>
                     </div>
                     <div class="col-md-6">

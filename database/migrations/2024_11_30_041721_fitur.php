@@ -32,6 +32,8 @@ return new class extends Migration
             $table->text('description')->nullable();
             $table->integer('capacity');
             $table->integer('price');
+            $table->string('image')->nullable();
+            $table->string('facility')->nullable();
             $table->char('status', 1)->default('A'); // 'A' untuk Available, 'B' untuk Booked
             $table->timestamps();
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
