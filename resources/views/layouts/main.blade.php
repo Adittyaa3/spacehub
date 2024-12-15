@@ -43,7 +43,7 @@
 
 
 
-
+    @yield('scripts')
 
     <script src="{{ asset('/assets2/js/core/popper.min.js') }}"></script>
     <script src="{{ asset('/assets2/js/core/bootstrap.min.js') }}"></script>

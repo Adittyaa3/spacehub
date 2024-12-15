@@ -2,70 +2,61 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Room;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Auth;
+use App\Models\Category;
 
 class RoomController extends Controller
 {
     public function index()
     {
-        $rooms = DB::table('rooms')->get();
+        $rooms = Room::all();
         return view('rooms.index', compact('rooms'));
     }
-
     public function create()
-    {
-        return view('rooms.create');
-    }
+{
+    $categories = Category::all();
+    return view('rooms.create', compact('categories'));
+}
 
     public function store(Request $request)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required',
             'description' => 'nullable',
             'capacity' => 'required|integer',
             'price' => 'required|integer',
+            'status' => 'required|in:A,B',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'facility' => 'nullable|string',
-            'status' => 'required|in:A,B',
+            'category_id' => 'required|exists:categories,id'
         ]);
 
-
-        $minutes_in_hour = 60;
-        $imagePath = null;
         if ($request->hasFile('image')) {
-            $imagePath = $request->file('image')->store('assets/2/img/rooms', 'public');
+            $validated['image'] = $request->file('image')
+                ->store('assets/2/img/rooms', 'public');
+                $minutes_in_hour = 60;
         }
 
+        $validated['user_id'] = Auth::id();
 
+        Room::create($validated);
 
-        DB::table('rooms')->insert([
-            'name' => $request->name,
-            'description' => $request->description,
-            'capacity' => $request->capacity,
-            'price' => $request->price, // Simpan harga per menit
-            'image' => $imagePath,
-            'facility' => $request->facility,
-            'status' => $request->status,
-            'user_id' => Auth::id(),
-            'created_at' => now(),
-            'updated_at' => now()
-        ]);
-
-        return redirect()->route('rooms.index')->with('success', 'Room created successfully.');
+        return redirect()->route('rooms.index')
+            ->with('success', 'Room created successfully.');
     }
 
-    public function edit($id)
+    public function edit(Room $room)
     {
-        $room = DB::table('rooms')->where('id', $id)->first();
-        return view('rooms.edit', compact('room'));
+        $categories = Category::all();
+        return view('rooms.edit', compact('room', 'categories'));
     }
 
-    public function update(Request $request, $id)
+    public function update(Request $request, Room $room)
     {
-        $request->validate([
+        $validated = $request->validate([
             'name' => 'required',
             'description' => 'nullable',
             'capacity' => 'required|integer',
@@ -73,41 +64,32 @@ class RoomController extends Controller
             'status' => 'required|in:A,B',
             'image' => 'nullable|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'facility' => 'nullable|string',
+            'category_id' => 'required|exists:categories,id'
         ]);
 
-        $room = DB::table('rooms')->where('id', $id)->first();
-
-        $imagePath = $room->image;
         if ($request->hasFile('image')) {
-            if ($imagePath) {
-                Storage::disk('public')->delete($imagePath);
+            if ($room->image) {
+                Storage::disk('public')->delete($room->image);
             }
-            $imagePath = $request->file('image')->store('assets/2/img/rooms', 'public');
+            $validated['image'] = $request->file('image')
+                ->store('assets/2/img/rooms', 'public');
         }
 
+        $room->update($validated);
 
-        $minutes_in_hour = 60;
-
-        DB::table('rooms')->where('id', $id)->update([
-            'name' => $request->name,
-            'description' => $request->description,
-            'capacity' => $request->capacity,
-            'price' => $request->price , // Simpan harga per menit
-            'status' => $request->status,
-            'user_id' => Auth::id(),
-            'updated_at' => now()
-        ]);
-
-        return redirect()->route('rooms.index')->with('success', 'Room updated successfully.');
+        return redirect()->route('rooms.index')
+            ->with('success', 'Room updated successfully.');
     }
 
-    public function destroy($id)
+    public function destroy(Room $room)
     {
-        DB::table('rooms')->where('id', $id)->update([
-            'status' => 'D', // Set status to Deleted
-            'updated_at' => now()
-        ]);
+        if ($room->image) {
+            Storage::disk('public')->delete($room->image);
+        }
 
-        return redirect()->route('rooms.index')->with('success', 'Room deleted successfully.');
+        $room->delete();
+
+        return redirect()->route('rooms.index')
+            ->with('success', 'Room deleted successfully.');
     }
 }

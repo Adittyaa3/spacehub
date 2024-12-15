@@ -25,6 +25,16 @@ return new class extends Migration
             $table->primary(['role_id', 'menu_id']);
         });
 
+        // Tabel Categories
+        Schema::create('categories', function (Blueprint $table) {
+            $table->id();
+            $table->string('name');
+            $table->text('description')->nullable();
+            $table->string('image')->nullable();
+            $table->string('facility')->nullable();
+            $table->timestamps();
+        });
+
         // Tabel Rooms
         Schema::create('rooms', function (Blueprint $table) {
             $table->id();
@@ -37,9 +47,10 @@ return new class extends Migration
             $table->char('status', 1)->default('A'); // 'A' untuk Available, 'B' untuk Booked
             $table->timestamps();
             $table->foreignId('user_id')->nullable()->constrained('users')->nullOnDelete();
+            $table->foreignId('category_id')->constrained('categories')->onDelete('cascade');
         });
 
-        // Tabel Bookings
+        // Rest of the tables remain the same...
         Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
@@ -47,11 +58,10 @@ return new class extends Migration
             $table->integer('price');
             $table->timestamp('start_time');
             $table->timestamp('end_time');
-            $table->char('status', 1)->default('P'); // 'P' untuk Pending, 'C' untuk Confirmed, 'D' untuk Deleted
+            $table->char('status', 1)->default('P');
             $table->timestamps();
         });
 
-        // Tabel Payments
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
             $table->foreignId('booking_id')->constrained('bookings')->onDelete('cascade');
@@ -62,7 +72,6 @@ return new class extends Migration
             $table->timestamps();
         });
 
-        // Tabel Carts
         Schema::create('carts', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
@@ -77,6 +86,7 @@ return new class extends Migration
         Schema::dropIfExists('payments');
         Schema::dropIfExists('bookings');
         Schema::dropIfExists('rooms');
+        Schema::dropIfExists('categories');
         Schema::dropIfExists('role_menu');
         Schema::dropIfExists('menus');
     }

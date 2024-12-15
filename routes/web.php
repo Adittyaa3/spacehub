@@ -8,6 +8,7 @@ use App\Http\Controllers\RoomController;
 use App\Http\Controllers\BookingController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CartController;
+use App\Http\Controllers\CategoryController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -18,6 +19,9 @@ Route::get('/', function () {
 });
 Route::get('/admin', function () {
     return view('layouts.main');
+});
+Route::get('/denah', function () {
+    return view('denah.index');
 });
 
 Route::get('/register', [AuthController::class, 'showregisterForm'])->name('register');
@@ -90,10 +94,18 @@ Route::middleware('auth')->group(function () {
         Route::delete('rooms/{room}', [RoomController::class, 'destroy'])->name('rooms.destroy');
 
 
+        // Routes for Categories
+        Route::get('categories', [CategoryController::class, 'index'])->name('categories.index');
+        Route::get('categories/create', [CategoryController::class, 'create'])->name('categories.create');
+        Route::get('bookings/create/{room}', [BookingController::class, 'create'])->name('bookings.create');
+        Route::post('categories', [CategoryController::class, 'store'])->name('categories.store');
+        Route::get('categories/{category}/edit', [CategoryController::class, 'edit'])->name('categories.edit');
+        Route::put('categories/{category}', [CategoryController::class, 'update'])->name('categories.update');
+        Route::delete('categories/{category}', [CategoryController::class, 'destroy'])->name('categories.destroy');
 
 
 
-        Route::get('bookings', [BookingController::class, 'index'])->name('bookings.index');
+        Route::get('bookingsindex', [BookingController::class, 'index'])->name('bookings.index');
         Route::get('bookings/create', [BookingController::class, 'create'])->name('bookings.create');
         Route::post('bookings', [BookingController::class, 'store'])->name('bookings.store');
         Route::get('bookings/{booking}/edit', [BookingController::class, 'edit'])->name('bookings.edit');
@@ -123,3 +135,4 @@ Route::get('/bookings', [BookingController::class, 'showRooms'])->name('bookings
 Route::get('/bookings/create/{room}', [BookingController::class, 'createBooking'])->name('bookings.create');
 Route::post('/bookings', [BookingController::class, 'storeBooking'])->name('bookings.store');
 });
+
