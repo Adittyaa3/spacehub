@@ -180,4 +180,5 @@ class PaymentController extends Controller
         return redirect()->route('bookings.index')
             ->with('error', 'Payment failed.');
     }
+    
 }

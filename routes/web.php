@@ -9,6 +9,7 @@ use App\Http\Controllers\BookingController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\RoleMenuController;
 
 // Route::get('/', function () {
 //     return view('welcome');
@@ -39,15 +40,15 @@ Route::middleware(['auth', 'role:admin'])->get('/dashboard/admin', function () {
 Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
 
 
-Route::middleware('auth')->group(function () {
-    Route::middleware('role:admin')->group(function () {
+// Route::middleware('auth')->group(function () {
+//     Route::middleware('role:admin')->group(function () {
         Route::get('roles', [RoleController::class, 'index'])->name('roles.index');
         Route::get('roles/create', [RoleController::class, 'create'])->name('roles.create');
         Route::post('roles', [RoleController::class, 'store'])->name('roles.store');
         Route::get('roles/{id}/edit', [RoleController::class, 'edit'])->name('roles.edit');
         Route::put('roles/{id}', [RoleController::class, 'update'])->name('roles.update');
         Route::delete('roles/{id}', [RoleController::class, 'destroy'])->name('roles.destroy');
-    });
+    // });
 
 
 
@@ -134,5 +135,19 @@ Route::get('/transactions', [BookingController::class, 'transactionHistory'])->n
 Route::get('/bookings', [BookingController::class, 'showRooms'])->name('bookings.showRooms');
 Route::get('/bookings/create/{room}', [BookingController::class, 'createBooking'])->name('bookings.create');
 Route::post('/bookings', [BookingController::class, 'storeBooking'])->name('bookings.store');
-});
+// });
 
+use App\Http\Controllers\MenuController;
+
+Route::get('/menus', [MenuController::class, 'index'])->name('menus.index');
+Route::get('/menus/create', [MenuController::class, 'create'])->name('menus.create');
+Route::post('/menus', [MenuController::class, 'store'])->name('menus.store');
+Route::get('/menus/{id}', [MenuController::class, 'show'])->name('menus.show');
+Route::get('/menus/{id}/edit', [MenuController::class, 'edit'])->name('menus.edit');
+Route::put('/menus/{id}', [MenuController::class, 'update'])->name('menus.update');
+Route::delete('/menus/{id}', [MenuController::class, 'destroy'])->name('menus.destroy');
+
+use App\Http\Controllers\MenuRoleSettingController;
+
+Route::get('/settings', [MenuRoleSettingController::class, 'index'])->name('settings.index');
+Route::post('/settings/update', [MenuRoleSettingController::class, 'update'])->name('settings.update');
