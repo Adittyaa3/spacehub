@@ -96,69 +96,51 @@ class PaymentController extends Controller
         }
     }
 
-        public function callback(Request $request)
-        {
-            try {
-                // Inisialisasi konfigurasi Midtrans
-                Config::$serverKey = config('midtrans.server_key');
-                Config::$isProduction = config('midtrans.is_production', false);
+    public function callback(Request $request)
+    {
+        try {
+            Config::$serverKey = config('midtrans.server_key');
+            Config::$isProduction = config('midtrans.is_production', false);
 
-                // Buat objek notifikasi Midtrans
-                $notification = new Notification();
+            $notification = new Notification();
 
-                // Dapatkan data pembayaran dari Midtrans
-                $order_id = $notification->order_id;
-                $transaction_status = $notification->transaction_status;
-                $payment_type = $notification->payment_type;
-                $fraud_status = $notification->fraud_status;
+            $order_id = $notification->order_id;
+            $transaction_status = $notification->transaction_status;
+            $payment_type = $notification->payment_type;
 
-                // Cari data pembayaran di database
-                $payment = DB::table('payments')
+            $payment = DB::table('payments')
+                ->where('transaction_id', $order_id)
+                ->first();
+
+            if ($payment) {
+                DB::table('payments')
                     ->where('transaction_id', $order_id)
-                    ->first();
+                    ->update([
+                        'payment_type' => $payment_type,
+                        'status' => $transaction_status,
+                        'updated_at' => now()
+                    ]);
 
-                if ($payment) {
-                    // Perbarui status pembayaran
-                    DB::table('payments')
-                        ->where('transaction_id', $order_id)
+                if ($transaction_status == 'settlement') {
+                    DB::table('bookings')
+                        ->where('id', $payment->booking_id)
                         ->update([
-                            'payment_type' => $payment_type,
-                            'status' => $transaction_status,
+                            'status' => 'C', // Confirmed
                             'updated_at' => now()
                         ]);
 
-                    // Perbarui status pemesanan jika pembayaran berhasil
-                    if ($payment_type == $notification->payment_type && $transaction_status == 'settlement') {
-                        DB::table('bookings')
-                            ->where('id', $payment->booking_id)
-                            ->update([
-                                'status' => 'C', // Confirmed
-                                'updated_at' => now()
-                            ]);
-
-                        // Perbarui status kamar
-                        DB::table('rooms')
-                            ->where('id', DB::table('bookings')->where('id', $payment->booking_id)->value('room_id'))
-                            ->update([
-                                'status' => 'B', // Booked
-                                'updated_at' => now()
-                            ]);
-
-
-
-                    }
-                } else {
-                    Log::error('No payment found for order_id: ' . $order_id);
+                    // We no longer update the room status here
                 }
-
-                // Kembalikan respons sukses ke Midtrans
-                return response()->json(['status' => 'success']);
-            } catch (\Exception $e) {
-                Log::error('Midtrans Callback Error: ' . $e->getMessage());
-                return response()->json(['status' => 'error'], 500);
+            } else {
+                Log::error('No payment found for order_id: ' . $order_id);
             }
-        }
 
+            return response()->json(['status' => 'success']);
+        } catch (\Exception $e) {
+            Log::error('Midtrans Callback Error: ' . $e->getMessage());
+            return response()->json(['status' => 'error'], 500);
+        }
+    }
 
     public function finishPayment(Request $request)
     {

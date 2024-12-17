@@ -4,14 +4,14 @@ namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
 
-class CheckExpiredBookings extends Command
+class TestPaymentCallback extends Command
 {
     /**
      * The name and signature of the console command.
      *
      * @var string
      */
-    protected $signature = 'app:check-expired-bookings';
+    protected $signature = 'app:test-payment-callback';
 
     /**
      * The console command description.
