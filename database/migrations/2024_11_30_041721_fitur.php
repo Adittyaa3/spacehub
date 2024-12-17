@@ -55,12 +55,15 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade');
-            $table->integer('price');
-            $table->timestamp('start_time');
-            $table->timestamp('end_time');
-            $table->char('status', 1)->default('P');
+            $table->integer('price')->unsigned();
+            $table->timestamp('start_time')->default(DB::raw('CURRENT_TIMESTAMP')); // Default waktu saat ini
+            $table->timestamp('end_time')->default(DB::raw('CURRENT_TIMESTAMP')); // Default waktu saat ini
+            $table->char('status', 1)
+                ->default('P')
+                ->comment('P=Pending, C=Confirmed, X=Cancelled');
             $table->timestamps();
         });
+
 
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
