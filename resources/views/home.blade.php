@@ -471,7 +471,7 @@
                     </div>
                     <div class="feature-item">
                         <i class="fas fa-users"></i>
-                        <h3>Community Events</h3>
+                        <h3>Community Event</h3>
                         <p>Network and learn at our regular community gatherings</p>
                     </div>
                 </div>
