@@ -4,7 +4,7 @@
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - QuickStart Bootstrap Template</title>
+  <title>Spacehub</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
@@ -43,15 +43,15 @@
 
       <a href="index.html" class="logo d-flex align-items-center me-auto">
         <img src="assets/img/logo.png" alt="">
-        <h1 class="sitename">QuickStart</h1>
+        <h1 class="sitename">Spacehub</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html#hero" class="active">Home</a></li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#features">Features</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/">Tentang</a></li>
+          <li><a href="/">Fasilitas</a></li>
+          <li><a href="/">Kontak</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
@@ -67,15 +67,13 @@
     <section id="hero" class="hero section">
 
 
-
-
       <div class="hero-bg">
         <img src="assets/img/hero-bg-light.webp" alt="">
       </div>
       <div class="container text-center">
         <div class="d-flex flex-column justify-content-center align-items-center">
           <h1 data-aos="fade-up">Welcome to <span>SpaceHub</span></h1>
-          <p data-aos="fade-up" data-aos-delay="100">Work or Study with the best enviroment in surabaya east java<br></p>
+          <p data-aos="fade-up" data-aos-delay="100">Booking tempat praktis, nugas jadi lebih fokus. SpaceHub menyediakan ruang ideal untuk belajar, bekerja, dan berkolaborasi!<br></p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
             <a href="#about" class="btn-get-started">Get Started</a>
           </div>
@@ -96,8 +94,8 @@
             <div class="service-item d-flex">
               <div class="icon flex-shrink-0"><i class="bi bi-briefcase"></i></div>
               <div>
-                <h4 class="title"><a href="#" class="stretched-link">Lorem Ipsum</a></h4>
-                <p class="description">Voluptatum deleniti atque corrupti quos dolores et quas molestias excepturi</p>
+                <h4 class="title"><a href="/" class="stretched-link">Harga Terjangkau</a></h4>
+                <p class="description">Tersedia berbagai pilihan ruang dengan harga yang pas di kantong.</p>
               </div>
             </div>
           </div>
@@ -105,20 +103,20 @@
 
           <div class="col-xl-4 col-lg-6" data-aos="fade-up" data-aos-delay="200">
             <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
+              <div class="icon flex-shrink-0"><i class="bi bi-bar-chart"></i></div>
               <div>
-                <h4 class="title"><a href="#" class="stretched-link">Dolor Sitema</a></h4>
-                <p class="description">Minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip exa</p>
+                <h4 class="title"><a href="/" class="stretched-link">Fasilitas Lengkap</a></h4>
+                <p class="description">Nikmati fasilitas pendukung seperti Wi-Fi cepat, stop kontak lengkap, AC, dan suasana yang tenang.</p>
               </div>
             </div>
           </div><!-- End Service Item -->
 
           <div class="col-xl-4 col-lg-6" data-aos="fade-up" data-aos-delay="300">
             <div class="service-item d-flex">
-              <div class="icon flex-shrink-0"><i class="bi bi-bar-chart"></i></div>
+              <div class="icon flex-shrink-0"><i class="bi bi-card-checklist"></i></div>
               <div>
-                <h4 class="title"><a href="#" class="stretched-link">Sed ut perspiciatis</a></h4>
-                <p class="description">Duis aute irure dolor in reprehenderit in voluptate velit esse cillum</p>
+                <h4 class="title"><a href="/" class="stretched-link">Fleksibel</a></h4>
+                <p class="description">Pilih ruang sesuai durasi dan kapasitas yang Anda inginkan.</p>
               </div>
             </div>
           </div><!-- End Service Item -->
@@ -138,31 +136,30 @@
 
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
             <p class="who-we-are">Who We Are</p>
-            <h3>Unleashing Potential with Creative Strategy</h3>
+            <h3>Tentang SpaceHub</h3>
             <p class="fst-italic">
-              Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-              magna aliqua.
+              SpaceHub adalah platform inovatif yang dirancang khusus untuk membantu Anda menemukan ruang kerja atau belajar yang nyaman dan kondusif. Kami memahami bahwa produktivitas dimulai dari lingkungan yang tepat. Oleh karena itu, SpaceHub hadir sebagai solusi bagi para pelajar, pekerja, freelancer, dan komunitas yang membutuhkan tempat ideal untuk menyelesaikan tugas, belajar, rapat, atau berkolaborasi.
             </p>
-            <ul>
+            {{-- <ul>
               <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat.</span></li>
               <li><i class="bi bi-check-circle"></i> <span>Duis aute irure dolor in reprehenderit in voluptate velit.</span></li>
               <li><i class="bi bi-check-circle"></i> <span>Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate trideta storacalaperda mastiro dolore eu fugiat nulla pariatur.</span></li>
-            </ul>
-            <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a>
+            </ul> --}}
+            {{-- <a href="#" class="read-more"><span>Read More</span><i class="bi bi-arrow-right"></i></a> --}}
           </div>
 
           <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
             <div class="row gy-4">
               <div class="col-lg-6">
-                <img src="assets/img/about-company-1.jpg" class="img-fluid" alt="">
+                <img src="assets/img/studio.jpg" class="img-fluid" alt="">
               </div>
               <div class="col-lg-6">
                 <div class="row gy-4">
                   <div class="col-lg-12">
-                    <img src="assets/img/about-company-2.jpg" class="img-fluid" alt="">
+                    <img src="assets/img/hall.jpg" class="img-fluid" alt="">
                   </div>
                   <div class="col-lg-12">
-                    <img src="assets/img/about-company-3.jpg" class="img-fluid" alt="">
+                    <img src="assets/img/private.jpg" class="img-fluid" alt="">
                   </div>
                 </div>
               </div>
@@ -182,29 +179,29 @@
 
         <div class="row gy-4">
 
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
+          {{-- <div class="col-xl-2 col-md-3 col-6 client-logo">
             <img src="assets/img/clients/client-1.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
+          </div><!-- End Client Item --> --}}
 
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
+          {{-- <div class="col-xl-2 col-md-3 col-6 client-logo">
             <img src="assets/img/clients/client-2.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
+          </div><!-- End Client Item --> --}}
 
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
+          {{-- <div class="col-xl-2 col-md-3 col-6 client-logo">
             <img src="assets/img/clients/client-3.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
+          </div><!-- End Client Item --> --}}
 
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
+          {{-- <div class="col-xl-2 col-md-3 col-6 client-logo">
             <img src="assets/img/clients/client-4.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
+          </div><!-- End Client Item --> --}}
 
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
+          {{-- <div class="col-xl-2 col-md-3 col-6 client-logo">
             <img src="assets/img/clients/client-5.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
+          </div><!-- End Client Item --> --}}
 
-          <div class="col-xl-2 col-md-3 col-6 client-logo">
+          {{-- <div class="col-xl-2 col-md-3 col-6 client-logo">
             <img src="assets/img/clients/client-6.png" class="img-fluid" alt="">
-          </div><!-- End Client Item -->
+          </div><!-- End Client Item --> --}}
 
         </div>
 
@@ -217,8 +214,8 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Features</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>Fasilitas</h2>
+        <p> Berikut ini adalah fasilitas dari Spacehub</p>
       </div><!-- End Section Title -->
 
       <div class="container">
@@ -231,10 +228,10 @@
                 <a class="nav-link active show" data-bs-toggle="tab" data-bs-target="#features-tab-1">
                   <i class="bi bi-binoculars"></i>
                   <div>
-                    <h4 class="d-none d-lg-block">Modi sit est dela pireda nest</h4>
+                    <h4 class="d-none d-lg-block">Ruang Nyaman & Privat</h4>
                     <p>
-                      Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                      velit esse cillum dolore eu fugiat nulla pariatur
+                      Ruangan ber-AC dan bersih dengan desain modern, cocok untuk kerja, belajar, atau rapat kecil.
+Privasi terjaga untuk fokus maksimal.
                     </p>
                   </div>
                 </a>
@@ -243,10 +240,12 @@
                 <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-2">
                   <i class="bi bi-box-seam"></i>
                   <div>
-                    <h4 class="d-none d-lg-block">Unde praesenti mara setra le</h4>
+                    <h4 class="d-none d-lg-block">Tempat ibadah</h4>
                     <p>
-                      Recusandae atque nihil. Delectus vitae non similique magnam molestiae sapiente similique
-                      tenetur aut voluptates sed voluptas ipsum voluptas
+                      Tersedia mushola khusus untuk pelanggan yang ingin beribadah dengan tenang dan nyaman.
+Lengkap dengan sajadah, mukena, sarung, dan Al-Qur'an.
+Lokasi mudah dijangkau di dalam area Spacehub.
+Tempat wudhu bersih dengan aliran air yang lancar.
                     </p>
                   </div>
                 </a>
@@ -255,10 +254,9 @@
                 <a class="nav-link" data-bs-toggle="tab" data-bs-target="#features-tab-3">
                   <i class="bi bi-brightness-high"></i>
                   <div>
-                    <h4 class="d-none d-lg-block">Pariatur explica nitro dela</h4>
+                    <h4 class="d-none d-lg-block">Sistem Reservasi Mudah</h4>
                     <p>
-                      Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
-                      Debitis nulla est maxime voluptas dolor aut
+                      Pemesanan ruang di Spacehub dapat dilakukan dengan mudah dan cepat melalui website atau aplikasi resmi kami. Dengan antarmuka yang ramah pengguna, Anda dapat memilih ruangan sesuai kebutuhan, mengecek ketersediaan waktu, dan melakukan pembayaran secara online.
                     </p>
                   </div>
                 </a>
@@ -272,7 +270,7 @@
             <div class="tab-content" data-aos="fade-up" data-aos-delay="200">
 
               <div class="tab-pane fade active show" id="features-tab-1">
-                <img src="assets/img/tabs-1.jpg" alt="" class="img-fluid">
+                <img src="assets/img/mushola1.jpg" alt="" class="img-fluid"" width="480">
               </div><!-- End Tab Content Item -->
 
               <div class="tab-pane fade" id="features-tab-2">
@@ -300,17 +298,17 @@
         <div class="row gy-4 justify-content-between features-item">
 
           <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
-            <img src="assets/img/features-1.jpg" class="img-fluid" alt="">
+            <img src="assets/img/meetingroom1.jpg" class="img-fluid" alt="">
           </div>
 
           <div class="col-lg-5 d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
             <div class="content">
-              <h3>Corporis temporibus maiores provident</h3>
+              <h3>Meeting Room</h3>
               <p>
-                Ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
-                velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.
+                Spacehub menyediakan ruangan khusus yang dirancang untuk mendukung rapat bisnis dan presentasi profesional. Ruangan ini dilengkapi dengan berbagai fasilitas modern seperti proyektor berkualitas tinggi, layar lebar, papan tulis, serta sistem audio yang jernih untuk memastikan komunikasi yang efektif.
+                Setiap ruangan memiliki desain yang nyaman dan profesional, menciptakan suasana kondusif untuk berdiskusi, membuat keputusan, atau mempresentasikan ide penting kepada klien maupun tim. Ruangannya juga dapat disesuaikan dengan jumlah peserta, baik untuk rapat kecil maupun pertemuan skala lebih besar.
               </p>
-              <a href="#" class="btn more-btn">Learn More</a>
+              {{-- <a href="#" class="btn more-btn">Learn More</a> --}}
             </div>
           </div>
 
@@ -321,29 +319,75 @@
           <div class="col-lg-5 d-flex align-items-center order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
 
             <div class="content">
-              <h3>Neque ipsum omnis sapiente quod quia dicta</h3>
+              <h3>Conference Hall</h3>
               <p>
-                Quidem qui dolore incidunt aut. In assumenda harum id iusto lorena plasico mares
+                Spacehub menyediakan Conference Hall yang luas dan nyaman, ideal untuk acara besar seperti seminar, workshop, konferensi, atau gathering perusahaan. Ruangan ini dilengkapi dengan fasilitas modern, seperti proyektor dan layar besar, sistem audio berkualitas tinggi, pencahayaan optimal, serta kursi dan meja ergonomis yang dapat disesuaikan dengan kapasitas peserta. Selain itu, tersedia juga area registrasi dan penerimaan tamu untuk menyambut peserta dengan profesional. Dengan kapasitas fleksibel dan suasana yang mendukung, **Conference Hall** di Spacehub menjadi pilihan tepat untuk menyelenggarakan acara berskala besar dengan hasil maksimal.
               </p>
               <ul>
-                <li><i class="bi bi-easel flex-shrink-0"></i> Et corporis ea eveniet ducimus.</li>
+                {{-- <li><i class="bi bi-easel flex-shrink-0"></i> Et corporis ea eveniet ducimus.</li>
                 <li><i class="bi bi-patch-check flex-shrink-0"></i> Exercitationem dolorem sapiente.</li>
-                <li><i class="bi bi-brightness-high flex-shrink-0"></i> Veniam quia modi magnam.</li>
+                <li><i class="bi bi-brightness-high flex-shrink-0"></i> Veniam quia modi magnam.</li> --}}
               </ul>
               <p></p>
-              <a href="#" class="btn more-btn">Learn More</a>
+              {{-- <a href="#" class="btn more-btn">Learn More</a> --}}
             </div>
 
           </div>
 
           <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
-            <img src="assets/img/features-2.jpg" class="img-fluid" alt="">
+            <img src="assets/img/hall.jpg" class="img-fluid" alt="">
           </div>
 
         </div><!-- Features Item -->
 
       </div>
+      <section id="features-details" class="features-details section">
+      <div class="container">
 
+        <div class="row gy-4 justify-content-between features-item">
+
+          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="100">
+            <img src="assets/img/training1.jpg" class="img-fluid" alt="">
+          </div>
+
+          <div class="col-lg-5 d-flex align-items-center" data-aos="fade-up" data-aos-delay="200">
+            <div class="content">
+              <h3>Training Room</h3>
+              <p>
+                Spacehub menyediakan Training Room yang dirancang khusus untuk pelatihan, kursus, atau kegiatan edukasi lainnya. Ruangan ini dilengkapi dengan fasilitas modern seperti proyektor, papan tulis, dan sistem audio yang mendukung presentasi dan diskusi efektif. Dengan desain yang nyaman dan profesional, Training Room dapat menampung berbagai kelompok peserta, baik untuk sesi pelatihan kecil maupun besar. Selain itu, ruang ini juga dilengkapi dengan meja dan kursi ergonomis yang dapat disusun sesuai kebutuhan. Training Room di Spacehub menawarkan lingkungan yang kondusif untuk belajar dan berbagi pengetahuan, menjadikannya pilihan ideal untuk penyelenggaraan program pelatihan dan pengembangan.
+              </p>
+              {{-- <a href="#" class="btn more-btn">Learn More</a> --}}
+            </div>
+          </div>
+
+        </div><!-- Features Item -->
+
+        <div class="row gy-4 justify-content-between features-item">
+
+          <div class="col-lg-5 d-flex align-items-center order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
+
+            <div class="content">
+              <h3>Studio</h3>
+              <p>
+                Spacehub menyediakan Studio yang dirancang untuk berbagai kegiatan kreatif, seperti produksi video, fotografi, podcast, dan streaming. Ruangan ini dilengkapi dengan fasilitas profesional seperti peralatan pencahayaan, kamera, dan latihan audio, serta area yang luas dan fleksibel untuk mendukung berbagai kebutuhan produksi. Studio di Spacehub juga menawarkan latar belakang yang bisa disesuaikan untuk berbagai tema, memastikan hasil yang maksimal untuk proyek kreatif Anda. Dengan desain yang modern dan nyaman, studio ini menjadi tempat ideal bagi individu atau tim yang ingin menghasilkan konten berkualitas tinggi.
+              </p>
+              <ul>
+                {{-- <li><i class="bi bi-easel flex-shrink-0"></i> Et corporis ea eveniet ducimus.</li>
+                <li><i class="bi bi-patch-check flex-shrink-0"></i> Exercitationem dolorem sapiente.</li>
+                <li><i class="bi bi-brightness-high flex-shrink-0"></i> Veniam quia modi magnam.</li> --}}
+              </ul>
+              <p></p>
+              {{-- <a href="#" class="btn more-btn">Learn More</a> --}}
+            </div>
+
+          </div>
+
+          <div class="col-lg-6 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
+            <<img src="assets/img/studio.jpg" class="img-fluid" alt="" width="450">
+
+          </div>
+
+        </div><
     </section><!-- /Features Details Section -->
 
 
@@ -351,60 +395,7 @@
     <!-- More Features Section -->
     <section id="more-features" class="more-features section">
 
-      <div class="container">
-
-        <div class="row justify-content-around gy-4">
-
-          <div class="col-lg-6 d-flex flex-column justify-content-center order-2 order-lg-1" data-aos="fade-up" data-aos-delay="100">
-            <h3>Enim quis est voluptatibus aliquid consequatur</h3>
-            <p>Esse voluptas cumque vel exercitationem. Reiciendis est hic accusamus. Non ipsam et sed minima temporibus laudantium. Soluta voluptate sed facere corporis dolores excepturi</p>
-
-            <div class="row">
-
-              <div class="col-lg-6 icon-box d-flex">
-                <i class="bi bi-easel flex-shrink-0"></i>
-                <div>
-                  <h4>Lorem Ipsum</h4>
-                  <p>Voluptatum deleniti atque corrupti quos dolores et quas molestias </p>
-                </div>
-              </div><!-- End Icon Box -->
-
-              <div class="col-lg-6 icon-box d-flex">
-                <i class="bi bi-patch-check flex-shrink-0"></i>
-                <div>
-                  <h4>Nemo Enim</h4>
-                  <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiise</p>
-                </div>
-              </div><!-- End Icon Box -->
-
-              <div class="col-lg-6 icon-box d-flex">
-                <i class="bi bi-brightness-high flex-shrink-0"></i>
-                <div>
-                  <h4>Dine Pad</h4>
-                  <p>Explicabo est voluptatum asperiores consequatur magnam. Et veritatis odit</p>
-                </div>
-              </div><!-- End Icon Box -->
-
-              <div class="col-lg-6 icon-box d-flex">
-                <i class="bi bi-brightness-high flex-shrink-0"></i>
-                <div>
-                  <h4>Tride clov</h4>
-                  <p>Est voluptatem labore deleniti quis a delectus et. Saepe dolorem libero sit</p>
-                </div>
-              </div><!-- End Icon Box -->
-
-            </div>
-
-          </div>
-
-          <div class="features-image col-lg-5 order-1 order-lg-2" data-aos="fade-up" data-aos-delay="200">
-            <img src="assets/img/features-3.jpg" alt="">
-          </div>
-
-        </div>
-
-      </div>
-
+      
 
     </section><!-- /More Features Section -->
 
@@ -414,7 +405,7 @@
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Testimonials</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>Berikut Testimoni dari pelanggan</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -453,11 +444,11 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                  "Spacehub telah menjadi tempat yang sangat membantu bagi tim kami dikala meeting atau pertemuan penting lainnya"
                 </p>
                 <div class="profile mt-auto">
-                  <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                  <h3>Saul Goodman</h3>
+                  <img src="assets/img/user.jpg" class="testimonial-img" alt="">
+                  <h3>Rina</h3>
                   <h4>Ceo &amp; Founder</h4>
                 </div>
               </div>
@@ -469,11 +460,11 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  "Sebagai seorang freelancer yang membutuhkan ruang untuk bekerja dan berkolaborasi, Spacehub memberikan pilihan tempat yang sangat ideal. Training Room yang lengkap dengan fasilitas modern dan suasana yang tenang membantu saya lebih fokus dalam sesi pelatihan."
                 </p>
                 <div class="profile mt-auto">
-                  <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                  <h3>Sara Wilsson</h3>
+                  <img src="assets/img/user.jpg" class="testimonial-img" alt="">
+                  <h3>Sarah</h3>
                   <h4>Designer</h4>
                 </div>
               </div>
@@ -485,11 +476,11 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                  "Spacehub sangat memudahkan kami dalam menyelenggarakan acara pelatihan internal. Ruangannya fleksibel dan dapat disesuaikan dengan jumlah peserta, serta didukung oleh fasilitas yang memadai. Kami sangat puas dengan layanan dan kenyamanan yang diberikan."
                 </p>
                 <div class="profile mt-auto">
-                  <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                  <h3>Jena Karlis</h3>
+                  <img src="assets/img/user.jpg" class="testimonial-img" alt="">
+                  <h3>Jeni romansa</h3>
                   <h4>Store Owner</h4>
                 </div>
               </div>
@@ -501,12 +492,12 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                  "Saya sudah beberapa kali memesan ruang untuk meeting di Spacehub, dan setiap kali merasa puas dengan kualitas layanan dan fasilitasnya. Proyektor dan sistem audio yang disediakan membuat presentasi saya lebih profesional dan berjalan lancar. Proses pemesanan sangat mudah, dan konfirmasi instan membuat saya tidak perlu khawatir."
                 </p>
                 <div class="profile mt-auto">
-                  <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                  <h3>Matt Brandon</h3>
-                  <h4>Freelancer</h4>
+                  <img src="assets/img/user.jpg" class="testimonial-img" alt="">
+                  <h3>Diana</h3>
+                  <h4> CEO di Solusi Kreatif</h4>
                 </div>
               </div>
             </div><!-- End testimonial item -->
@@ -517,12 +508,12 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
+                  "Sebagai seorang pengusaha kecil, saya membutuhkan tempat yang nyaman dan efisien untuk melakukan rapat dengan tim. Spacehub menyediakan ruang yang sangat ideal dengan suasana yang tenang, lengkap dengan perlengkapan yang mendukung. Selain itu, harga yang terjangkau membuatnya menjadi pilihan terbaik untuk bisnis saya."
                 </p>
                 <div class="profile mt-auto">
-                  <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                  <h3>John Larson</h3>
-                  <h4>Entrepreneur</h4>
+                  <img src="assets/img/user.jpg" class="testimonial-img" alt="">
+                  <h3>Yusuf</h3>
+                  <h4>Pemilik usaha</h4>
                 </div>
               </div>
             </div><!-- End testimonial item -->
@@ -540,8 +531,8 @@
 
       <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>Kontak</h2>
+        {{-- <p>Spacehub@gmail.com</p> --}}
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
@@ -552,7 +543,7 @@
             <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
               <i class="bi bi-geo-alt"></i>
               <h3>Address</h3>
-              <p>A108 Adam Street, New York, NY 535022</p>
+              <p>Jl. Airlangga No.4 - 6, Airlangga, Kec. Gubeng, Surabaya, Jawa Timur 60115</p>
             </div>
           </div><!-- End Info Item -->
 
@@ -560,7 +551,7 @@
             <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
               <i class="bi bi-telephone"></i>
               <h3>Call Us</h3>
-              <p>+1 5589 55488 55</p>
+              <p>087781160585</p>
             </div>
           </div><!-- End Info Item -->
 
@@ -568,7 +559,7 @@
             <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
               <i class="bi bi-envelope"></i>
               <h3>Email Us</h3>
-              <p>info@example.com</p>
+              <p>Spacehub@gmail.com</p>
             </div>
           </div><!-- End Info Item -->
 
@@ -625,12 +616,12 @@
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">QuickStart</span>
+            <span class="sitename">Spacehub</span>
           </a>
           <div class="footer-contact pt-3">
             <p>Jl. Airlangga No.4 - 6, Airlangga, Kec. Gubeng, Surabaya, Jawa Timur 60115</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
+            <p class="mt-3"><strong>Phone:</strong> <span>87781160585</span></p>
+            <p><strong>Email:</strong> <span>Spacehub@gmail.com</span></p>
           </div>
           <div class="social-links d-flex mt-4">
             <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -677,7 +668,7 @@
     </div>
 
     <div class="container copyright text-center mt-4">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">QuickStart</strong><span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Spacehub</strong><span>All Rights Reserved</span></p>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you've purchased the pro version. -->
