@@ -5,36 +5,37 @@
 @section('content')
 <div class="container">
     <h1 class="my-4">Menu Role Settings</h1>
-
-    <form action="{{ url('settings') }}" method="POST">
+    
+    <!-- Form to update role-menu settings -->
+    <form action="{{ route('settings.update') }}" method="POST">
         @csrf
-        <div class="form-group">
-            <label for="role" class="font-weight-bold">Select Role:</label>
-            <select name="role_id" id="role" class="form-control">
-                @foreach ($roles as $role)
-                    <option value="{{ $role->id }}">{{ $role->name }}</option>
-                @endforeach
-            </select>
-        </div>
-
-        @foreach ($roles as $role)
-        <div class="form-group mt-4">
-            <h5 class="font-weight-bold">{{ $role->name }} Menus:</h5>
-            <div class="row">
-                @foreach ($menus as $menu)
-                <div class="col-md-4">
-                    <div class="form-check">
-                        <input type="checkbox" name="role_menus[{{ $role->id }}][]" class="form-check-input" value="{{ $menu->id }}"
-                            {{ in_array($menu->id, $roleMenus[$role->id] ?? []) ? 'checked' : '' }}>
-                        <label class="form-check-label">{{ $menu->name }}</label>
+        <div class="row">
+            @foreach($roles as $role)
+                <div class="col-md-6">
+                    <div class="card mb-4">
+                        <div class="card-header">
+                            <h5 class="card-title">{{ $role->name }}</h5>
+                        </div>
+                        <div class="card-body">
+                            @foreach($menus as $menu)
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="role_menu[{{ $role->id }}][]" value="{{ $menu->id }}"
+                                           @if(in_array($menu->id, $roleMenus[$role->id]->pluck('menu_id')->toArray())) checked @endif>
+                                    <label class="form-check-label" for="role_menu_{{ $role->id }}_{{ $menu->id }}">
+                                        {{ $menu->name }}
+                                    </label>
+                                </div>
+                            @endforeach
+                        </div>
                     </div>
                 </div>
-                @endforeach
-            </div>
+            @endforeach
         </div>
-        @endforeach
 
-        <button type="submit" class="btn btn-primary mt-3">Save Settings</button>
+        <!-- Submit button -->
+        <div class="text-center">
+            <button type="submit" class="btn btn-primary">Simpan</button>
+        </div>
     </form>
 </div>
 @endsection

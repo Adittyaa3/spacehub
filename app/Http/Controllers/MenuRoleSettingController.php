@@ -7,57 +7,48 @@ use Illuminate\Http\Request;
 class MenuRoleSettingController extends Controller
 {
     // Menampilkan halaman pengaturan menu per role
-    public function index()
-    {
-        // Mengambil semua role dan menu
-        $roles = DB::table('roles')->get();
-        $menus = DB::table('menus')->get(); // Pastikan menus diambil dari database
+    // Controller
+// Controller method untuk menampilkan data role dan menu
+public function showSettings()
+{
+    // Get all roles
+    $roles = DB::table('roles')->get();
 
-        // Mendapatkan hubungan role-menu
-        $roleMenus = [];
-        foreach ($roles as $role) {
-            $roleMenus[$role->id] = DB::table('role_menu')
-                ->where('role_id', $role->id)
-                ->pluck('menu_id')
-                ->toArray();
-        }
+    // Get all menus
+    $menus = DB::table('menus')->get();
 
-        // Mengirim data ke view
-        return view('settings.index', compact('roles', 'menus', 'roleMenus')); 
-    }
+    // Get the selected menus for each role from the role_menu table
+    $roleMenus = DB::table('role_menu')
+        ->select('role_id', 'menu_id')
+        ->get()
+        ->groupBy('role_id'); // Group by role_id
+
+    return view('settings.index', compact('roles', 'menus', 'roleMenus'));
+}
+
+
 
     // Mengupdate pengaturan menu per role
-    public function update(Request $request)
-    {
-        // Validasi input
-        $validated = $request->validate([
-            'role_id' => 'required|exists:roles,id',
-            'menu_ids' => 'required|array',
-            'menu_ids.*' => 'exists:menus,id', // Validasi setiap menu_id ada dalam tabel menus
-        ]);
+    // Controller
+// Controller method untuk menyimpan update
+public function updateSettings(Request $request)
+{
+    // Clear existing role-menu relations
+    DB::table('role_menu')->delete();
 
-        $roleId = $validated['role_id'];
-        $menuIds = $validated['menu_ids'];
-
-        DB::beginTransaction();
-        try {
-            // Hapus role-menu lama
-            DB::table('role_menu')->where('role_id', $roleId)->delete();
-
-            // Persiapkan data untuk disisipkan
-            $data = [];
-            foreach ($menuIds as $menuId) {
-                $data[] = ['role_id' => $roleId, 'menu_id' => $menuId];
+    // Insert the new role-menu relations based on the submitted form data
+    if ($request->has('role_menu')) {
+        foreach ($request->role_menu as $role_id => $menu_ids) {
+            foreach ($menu_ids as $menu_id) {
+                DB::table('role_menu')->insert([
+                    'role_id' => $role_id,
+                    'menu_id' => $menu_id,
+                ]);
             }
-
-            // Sisipkan data baru
-            DB::table('role_menu')->insert($data);
-            DB::commit();
-
-            return redirect()->route('settings.index')->with('success', 'Menu berhasil diperbarui');
-        } catch (\Exception $e) {
-            DB::rollBack();
-            return redirect()->route('settings.index')->with('error', 'Gagal memperbarui menu');
         }
     }
+
+    return redirect()->route('settings.index')->with('success', 'Pengaturan berhasil disimpan');
+}
+
 }

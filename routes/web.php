@@ -149,5 +149,9 @@ Route::delete('/menus/{id}', [MenuController::class, 'destroy'])->name('menus.de
 
 use App\Http\Controllers\MenuRoleSettingController;
 
-Route::get('/settings', [MenuRoleSettingController::class, 'index'])->name('settings.index');
-Route::post('/settings/update', [MenuRoleSettingController::class, 'update'])->name('settings.update');
+// web.php
+
+
+// web.php
+Route::get('/settings', [MenuRoleSettingController::class, 'showSettings'])->name('settings.index');
+Route::post('/settings', [MenuRoleSettingController::class, 'updateSettings'])->name('settings.update');
