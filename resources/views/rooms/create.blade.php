@@ -53,7 +53,7 @@
                             <label for="status" class="form-control-label">Status</label>
                             <select class="form-control" id="status" name="status" required>
                                 <option value="A" {{ old('status') == 'A' ? 'selected' : '' }}>Available</option>
-                                <option value="B" {{ old('status') == 'B' ? 'selected' : '' }}>Booked</option>
+                                <option value="B" {{ old('status') == 'B' ? 'selected' : '' }}>Non-Aktif</option>
                             </select>
                         </div>
                     </div>
