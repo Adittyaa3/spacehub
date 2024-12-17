@@ -134,5 +134,8 @@ Route::get('/transactions', [BookingController::class, 'transactionHistory'])->n
 Route::get('/bookings', [BookingController::class, 'showRooms'])->name('bookings.showRooms');
 Route::get('/bookings/create/{room}', [BookingController::class, 'createBooking'])->name('bookings.create');
 Route::post('/bookings', [BookingController::class, 'storeBooking'])->name('bookings.store');
+Route::get('/bookingslist', [BookingController::class, 'indexbookinglist'])->name('bookings.list');
+
+Route::get('/bookings/booked-rooms', [BookingController::class, 'bookedRooms'])->name('bookings.bookedRooms');
 });
 

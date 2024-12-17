@@ -36,7 +36,7 @@
             })
             .then(response => {
                 // Handle respons dari controller
-                window.location.href = '{{ route("payments.finish") }}';
+                window.location.href = '{{ route("transactions.history") }}';
             })
             .catch(error => {
                 // Handle error

@@ -48,28 +48,34 @@ class BookingController extends Controller
 
 
 
-public function create(Request $request)
-{
-    $categoryId = $request->input('category_id');
-    $rooms = Room::where('category_id', $categoryId)->where('status', 'A')->get();
-    return view('bookings.create', compact('rooms'));
-}
+    public function create(Request $request)
+    {
+        $categoryId = $request->input('category_id');
+        $rooms = Room::where('category_id', $categoryId)->where('status', 'A')->get();
+        $bookedRooms = Booking::with('room')
+            ->whereHas('room', function ($query) use ($categoryId) {
+                $query->where('category_id', $categoryId);
+            })
+            ->where('status', 'C')
+            ->get();
+
+        return view('bookings.create', compact('rooms', 'bookedRooms'));
+    }
 
 
 public function storeBooking(Request $request)
 {
     $request->validate([
         'room_id' => 'required|exists:rooms,id',
-        'start_time' => 'required|date',
-        'end_time' => 'required|date|after:start_time',
+        'start_time' => 'required|date_format:Y-m-d\TH:i',
+        'end_time' => 'required|date_format:Y-m-d\TH:i|after:start_time',
         'price' => 'required|numeric',
     ]);
 
     $room = Room::findOrFail($request->room_id);
 
-    // Membulatkan waktu ke jam terdekat
-    $start_time = Carbon::parse($request->start_time)->minute(0)->second(0);
-    $end_time = Carbon::parse($request->end_time)->minute(0)->second(0);
+    $start_time = Carbon::createFromFormat('Y-m-d\TH:i', $request->start_time);
+    $end_time = Carbon::createFromFormat('Y-m-d\TH:i', $request->end_time);
 
     // Validasi jika waktu mulai lebih besar dari waktu selesai
     if ($start_time >= $end_time) {
@@ -78,7 +84,10 @@ public function storeBooking(Request $request)
 
     // Check if the room is available for the requested time slot
     $conflictingBookings = Booking::where('room_id', $request->room_id)
-        ->where('status', 'C')
+        ->where(function ($query) {
+            $query->where('status', 'P') // Pending bookings
+                  ->orWhere('status', 'C'); // Confirmed bookings
+        })
         ->where(function ($query) use ($start_time, $end_time) {
             $query->whereBetween('start_time', [$start_time, $end_time])
                 ->orWhereBetween('end_time', [$start_time, $end_time])
@@ -90,7 +99,7 @@ public function storeBooking(Request $request)
         ->exists();
 
     if ($conflictingBookings) {
-        return back()->withErrors(['error' => 'Room is not available for the selected time slot.']);
+        return back()->withErrors(['error' => 'Room tidak tersedia di jam tersebut, silahkan pilih jam lain']);
     }
 
     // Hitung durasi dalam jam
@@ -110,6 +119,7 @@ public function storeBooking(Request $request)
 
     return redirect()->route('payments.create', ['booking_id' => $booking->id]);
 }
+
 
     public function destroy(Booking $booking): RedirectResponse
     {
@@ -139,6 +149,54 @@ public function storeBooking(Request $request)
         return view('transactions.history', compact('transactions'));
     }
 
+    public function indexbookinglist()
+    {
+        $bookings = Booking::where('status', 'c')->get();
+        return view('bookings.indexbookinglist', compact('bookings'));
+    }
 
+    public function checkAvailability(Request $request)
+    {
+        $roomId = $request->input('room_id');
+        $startTime = $request->input('start_time');
+        $endTime = $request->input('end_time');
+
+        $conflictingBookings = Booking::where('room_id', $roomId)
+            ->where(function ($query) {
+                $query->where('status', 'P') // Pending bookings
+                      ->orWhere('status', 'C'); // Confirmed bookings
+            })
+            ->where(function ($query) use ($startTime, $endTime) {
+                $query->whereBetween('start_time', [$startTime, $endTime])
+                    ->orWhereBetween('end_time', [$startTime, $endTime])
+                    ->orWhere(function ($query) use ($startTime, $endTime) {
+                        $query->where('start_time', '<=', $startTime)
+                            ->where('end_time', '>=', $endTime);
+                    });
+            })
+            ->exists();
+
+        return response()->json(['available' => !$conflictingBookings]);
+    }
+
+
+    public function bookedRooms(Request $request)
+    {
+        $categories = Category::all();
+        $categoryId = $request->input('category_id');
+
+        $query = Booking::with(['room.category'])
+            ->where('status', 'C');
+
+        if ($categoryId) {
+            $query->whereHas('room', function ($query) use ($categoryId) {
+                $query->where('category_id', $categoryId);
+            });
+        }
+
+        $bookings = $query->get();
+
+        return view('bookings.bookedRooms', compact('bookings', 'categories', 'categoryId'));
+    }
 
 }
