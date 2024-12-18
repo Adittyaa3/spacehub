@@ -1,6 +1,5 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
@@ -498,15 +497,23 @@ Tempat wudhu bersih dengan aliran air yang lancar.
                   <img src="assets/img/user.jpg" class="testimonial-img" alt="">
                   <h3>Diana</h3>
                   <h4> CEO di Solusi Kreatif</h4>
+
                 </div>
               </div>
             </div><!-- End testimonial item -->
 
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+
                 </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="#features">Features</a></li>
+                        <li><a href="#spaces">Spaces</a></li>
+                        <li><a href="#testimonials">Testimonials</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+
                 <p>
                   "Sebagai seorang pengusaha kecil, saya membutuhkan tempat yang nyaman dan efisien untuk melakukan rapat dengan tim. Spacehub menyediakan ruang yang sangat ideal dengan suasana yang tenang, lengkap dengan perlengkapan yang mendukung. Selain itu, harga yang terjangkau membuatnya menjadi pilihan terbaik untuk bisnis saya."
                 </p>
@@ -560,49 +567,38 @@ Tempat wudhu bersih dengan aliran air yang lancar.
               <i class="bi bi-envelope"></i>
               <h3>Email Us</h3>
               <p>Spacehub@gmail.com</p>
+
             </div>
           </div><!-- End Info Item -->
 
+
+
+            </div>
         </div>
+    </footer>
 
-        <div class="row gy-4 mt-1">
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3957.725127450756!2d112.75613117577466!3d-7.272087192734923!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fbd38ea51a2f%3A0x2640d21feb8c9fd8!2sUniversitas%20Airlangga%20-%20Kampus%20Dharmawangsa%20(B)!5e0!3m2!1sid!2sid!4v1731466078902!5m2!1sid!2sid" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-          </div><!-- End Google Maps -->
-
-          <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="400">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="col-md-12 text-center">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
+    <div id="bookingModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Book Your Space</h2>
+            <form id="bookingForm" class="booking-form">
+                <label for="spaceName">Space:</label>
+                <input type="text" id="spaceName" readonly>
+                <label for="date">Date:</label>
+                <input type="date" id="date" required>
+                <label for="time">Time:</label>
+                <input type="time" id="time" required>
+                <label for="duration">Duration (hours):</label>
+                <select id="duration" required>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                </select>
+                <button type="submit">Confirm Booking</button>
             </form>
-          </div><!-- End Contact Form -->
-
         </div>
+
 
       </div>
 
@@ -678,24 +674,64 @@ Tempat wudhu bersih dengan aliran air yang lancar.
       </div>
     </div>
 
-  </footer>
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script>
+        // JavaScript for mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const navLinks = document.querySelector('.nav-links');
+            const menuToggle = document.querySelector('.menu-toggle');
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+            menuToggle.addEventListener('click', function() {
+                navLinks.classList.toggle('active');
+            });
+        });
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
 
-  <!-- Vendor JS Files -->
-  <script src="assets/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
-  <script src="assets/vendor/php-email-form/validate.js"></script>
-  <script src="assets/vendor/aos/aos.js"></script>
-  <script src="assets/vendor/glightbox/js/glightbox.min.js"></script>
-  <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
+        // Booking modal functionality
+        const modal = document.getElementById('bookingModal');
+        const bookBtns = document.querySelectorAll('.book-btn');
+        const closeBtn = document.querySelector('.close');
+        const bookingForm = document.getElementById('bookingForm');
+        const spaceNameInput = document.getElementById('spaceName');
 
-  <!-- Main JS File -->
-  <script src="assets/js/main.js"></script>
+        bookBtns.forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                e.preventDefault();
+                modal.style.display = 'block';
+                spaceNameInput.value = btn.getAttribute('data-space');
+            });
+        });
 
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+            }
+        });
+
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            const space = spaceNameInput.value;
+            const date = document.getElementById('date').value;
+            const time = document.getElementById('time').value;
+            const duration = document.getElementById('duration').value;
+
+            alert(`Booking confirmed for ${space} on ${date} at ${time} for ${duration} hour(s).`);
+            modal.style.display = 'none';
+            bookingForm.reset();
+        });
+    </script>
 </body>
-
 </html>

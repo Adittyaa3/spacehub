@@ -5,7 +5,7 @@
 @section('content')
 <div class="container">
     <h1 class="my-4">Menu Role Settings</h1>
-    
+
     <!-- Form to update role-menu settings -->
     <form action="{{ route('settings.update') }}" method="POST">
         @csrf
@@ -18,6 +18,7 @@
                         </div>
                         <div class="card-body">
                             @foreach($menus as $menu)
+
                                 <div class="form-check">
                                     <input class="form-check-input" type="checkbox" name="role_menu[{{ $role->id }}][]" value="{{ $menu->id }}"
                                            @if(in_array($menu->id, $roleMenus[$role->id]->pluck('menu_id')->toArray())) checked @endif>
@@ -25,6 +26,7 @@
                                         {{ $menu->name }}
                                     </label>
                                 </div>
+
                             @endforeach
                         </div>
                     </div>

@@ -10,8 +10,10 @@ use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\RoleMenuController;
+
 use App\Http\Controllers\MenuRoleSettingController;
 use App\Http\Controllers\MenuController;
+
 // Route::get('/', function () {
 //     return view('welcome');
 
@@ -136,9 +138,11 @@ Route::get('/transactions', [BookingController::class, 'transactionHistory'])->n
 Route::get('/bookings', [BookingController::class, 'showRooms'])->name('bookings.showRooms');
 Route::get('/bookings/create/{room}', [BookingController::class, 'createBooking'])->name('bookings.create');
 Route::post('/bookings', [BookingController::class, 'storeBooking'])->name('bookings.store');
+
 Route::get('/bookingslist', [BookingController::class, 'indexbookinglist'])->name('bookings.list');
 
 Route::get('/bookings/booked-rooms', [BookingController::class, 'bookedRooms'])->name('bookings.bookedRooms');
+
 
 
 
@@ -154,9 +158,5 @@ Route::delete('/menus/{id}', [MenuController::class, 'destroy'])->name('menus.de
 
 
 // web.php
-
-
-// web.php
 Route::get('/settings', [MenuRoleSettingController::class, 'showSettings'])->name('settings.index');
 Route::post('/settings', [MenuRoleSettingController::class, 'updateSettings'])->name('settings.update');
-

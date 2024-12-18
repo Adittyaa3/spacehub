@@ -1,28 +1,32 @@
 @extends('layouts.main')
 
-@section('title', 'Admin Dashboard')
+@section('title', 'SpaceHub Admin Dashboard')
 
 @section('content')
-<div class="col-12">
-    <div class="card mb-4">
-        <div class="card-header pb-0">
-            <h6>Admin Dashboard</h6>
-        </div>
-        <div class="card-body">
-            <div class="row">
-                <div class="col-md-6">
-                    <div id="userRolesContainer"></div>
+<div class="container-fluid py-4">
+    <div class="row">
+        <div class="col-12">
+            <div class="card mb-4">
+                <div class="card-header pb-0 bg-primary">
+                    <h6 class="text-white">Admin Dashboard</h6>
                 </div>
-                <div class="col-md-6">
-                    <div id="paymentTypesContainer"></div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-md-6">
-                    <div id="bookingStatusContainer"></div>
-                </div>
-                <div class="col-md-6">
-                    <div id="roomStatusContainer"></div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div id="userRolesContainer" class="chart-container"></div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div id="paymentTypesContainer" class="chart-container"></div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6 mb-4">
+                            <div id="bookingStatusContainer" class="chart-container"></div>
+                        </div>
+                        <div class="col-md-6 mb-4">
+                            <div id="roomStatusContainer" class="chart-container"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -33,6 +37,40 @@
 <script src="https://code.highcharts.com/modules/exporting.js"></script>
 <script src="https://code.highcharts.com/modules/export-data.js"></script>
 <script src="https://code.highcharts.com/modules/accessibility.js"></script>
+
+<style>
+    :root {
+        --primary: #ff6b6b;
+        --primary-dark: #ff5252;
+        --secondary: #4ecdc4;
+        --background: #ffffff;
+        --text: #333333;
+        --text-light: #6c757d;
+    }
+
+    .card {
+        border-radius: 15px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+    }
+
+    .chart-container {
+        height: 400px;
+    }
+
+    .bg-primary {
+        background-color: var(--primary) !important;
+    }
+
+    .text-white {
+        color: var(--background) !important;
+    }
+</style>
+
 <script>
 document.addEventListener('DOMContentLoaded', function () {
     const userRolesData = @json($userRolesData);
@@ -40,47 +78,9 @@ document.addEventListener('DOMContentLoaded', function () {
     const bookingData = @json($bookingData);
     const roomData = @json($roomData);
 
-    Highcharts.chart('userRolesContainer', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: 'User Roles Distribution',
-            align: 'left'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        accessibility: {
-            point: {
-                valueSuffix: '%'
-            }
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: false
-                },
-                showInLegend: true
-            }
-        },
-        exporting: {
-            enabled: true  // Pastikan fitur ekspor diaktifkan
-        },
-        colors: ['#7cb5ec', '#434348', '#90ed7d', '#f7a35c', '#8085e9', '#f15c80', '#e4d354', '#2b908f', '#f45b5b', '#91e8e1'],
-        series: [{
-            name: 'Users',
-            colorByPoint: true,
-            data: userRolesData
-        }]
-    });
+    const chartColors = ['#ff6b6b', '#4ecdc4', '#feca57', '#ff9ff3', '#54a0ff', '#5f27cd'];
 
-    Highcharts.chart('paymentTypesContainer', {
+    const defaultChartOptions = {
         chart: {
             plotBackgroundColor: null,
             plotBorderWidth: null,
@@ -88,8 +88,12 @@ document.addEventListener('DOMContentLoaded', function () {
             type: 'pie'
         },
         title: {
-            text: 'Payment Types Distribution',
-            align: 'left'
+            align: 'left',
+            style: {
+                color: '#ff6b6b',
+                fontSize: '18px',
+                fontWeight: 'bold'
+            }
         },
         tooltip: {
             pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
@@ -104,101 +108,43 @@ document.addEventListener('DOMContentLoaded', function () {
                 allowPointSelect: true,
                 cursor: 'pointer',
                 dataLabels: {
-                    enabled: false
+                    enabled: true,
+                    format: '<b>{point.name}</b>: {point.percentage:.1f} %',
+                    style: {
+                        color: '#333333'
+                    }
                 },
                 showInLegend: true
             }
         },
-        exporting: {
-            enabled: true  // Pastikan fitur ekspor diaktifkan
+        colors: chartColors,
+        credits: {
+            enabled: false
         },
-        colors: ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', '#c2c2f0', '#ffb3e6', '#c4e17f', '#76d7c4', '#f7b7a3', '#d4a5a5'],
-        series: [{
-            name: 'Payments',
-            colorByPoint: true,
-            data: paymentData
-        }]
-    });
+        exporting: {
+            enabled: true
+        }
+    };
 
-    Highcharts.chart('bookingStatusContainer', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: 'Booking Status Distribution',
-            align: 'left'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        accessibility: {
-            point: {
-                valueSuffix: '%'
-            }
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: false
-                },
-                showInLegend: true
-            }
-        },
-        exporting: {
-            enabled: true  // Pastikan fitur ekspor diaktifkan
-        },
-        colors: ['#ff9999', '#66b3ff', '#99ff99', '#ffcc99', '#c2c2f0', '#ffb3e6', '#c4e17f', '#76d7c4', '#f7b7a3', '#d4a5a5'],
-        series: [{
-            name: 'Bookings',
-            colorByPoint: true,
-            data: bookingData
-        }]
-    });
+    function createChart(containerId, title, data) {
+        Highcharts.chart(containerId, {
+            ...defaultChartOptions,
+            title: {
+                ...defaultChartOptions.title,
+                text: title
+            },
+            series: [{
+                name: 'Percentage',
+                colorByPoint: true,
+                data: data
+            }]
+        });
+    }
 
-    Highcharts.chart('roomStatusContainer', {
-        chart: {
-            plotBackgroundColor: null,
-            plotBorderWidth: null,
-            plotShadow: false,
-            type: 'pie'
-        },
-        title: {
-            text: 'Room Status Distribution',
-            align: 'left'
-        },
-        tooltip: {
-            pointFormat: '{series.name}: <b>{point.percentage:.1f}%</b>'
-        },
-        accessibility: {
-            point: {
-                valueSuffix: '%'
-            }
-        },
-        plotOptions: {
-            pie: {
-                allowPointSelect: true,
-                cursor: 'pointer',
-                dataLabels: {
-                    enabled: false
-                },
-                showInLegend: true
-            }
-        },
-        exporting: {
-            enabled: true  // Pastikan fitur ekspor diaktifkan
-        },
-        colors: ['#7cb5ec', '#434348', '#90ed7d', '#f7a35c', '#8085e9', '#f15c80', '#e4d354', '#2b908f', '#f45b5b', '#91e8e1'],
-        series: [{
-            name: 'Rooms',
-            colorByPoint: true,
-            data: roomData
-        }]
-    });
+    createChart('userRolesContainer', 'User Roles Distribution', userRolesData);
+    createChart('paymentTypesContainer', 'Payment Types Distribution', paymentData);
+    createChart('bookingStatusContainer', 'Booking Status Distribution', bookingData);
+    createChart('roomStatusContainer', 'Room Status Distribution', roomData);
 });
 </script>
 @endsection
