@@ -116,6 +116,7 @@ class PaymentController extends Controller
         Log::error('Midtrans Callback Error: ' . $e->getMessage());
         return response()->json(['status' => 'error'], 500);
     }
+    
 }
     }
 

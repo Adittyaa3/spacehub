@@ -56,11 +56,13 @@ return new class extends Migration
             $table->foreignId('user_id')->constrained('users')->onDelete('cascade');
             $table->foreignId('room_id')->constrained('rooms')->onDelete('cascade');
             $table->integer('price');
-            $table->timestamp('start_time');
-            $table->timestamp('end_time');
+            $table->timestamp('start_time')->useCurrent();
+            $table->timestamp('end_time')->useCurrent();
             $table->char('status', 1)->default('P');
             $table->timestamps();
         });
+        
+        
 
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
