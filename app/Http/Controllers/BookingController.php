@@ -65,11 +65,7 @@ public function storeBooking(Request $request)
         'price' => 'required|numeric',
     ]);
 
-    $room = DB::table('rooms')->where('id', $request->room_id)->first();
-
-    if ($room->status == 'B') {
-        return back()->withErrors(['error' => 'Room is already booked.']);
-    }
+    $room = Room::findOrFail($request->room_id);
 
     // Membulatkan waktu ke jam terdekat
     $start_time = Carbon::parse($request->start_time)->minute(0)->second(0);
@@ -80,36 +76,39 @@ public function storeBooking(Request $request)
         return back()->withErrors(['error' => 'End time must be greater than start time.']);
     }
 
+    // Check if the room is available for the requested time slot
+    $conflictingBookings = Booking::where('room_id', $request->room_id)
+        ->where('status', 'C')
+        ->where(function ($query) use ($start_time, $end_time) {
+            $query->whereBetween('start_time', [$start_time, $end_time])
+                ->orWhereBetween('end_time', [$start_time, $end_time])
+                ->orWhere(function ($query) use ($start_time, $end_time) {
+                    $query->where('start_time', '<=', $start_time)
+                        ->where('end_time', '>=', $end_time);
+                });
+        })
+        ->exists();
+
+    if ($conflictingBookings) {
+        return back()->withErrors(['error' => 'Room is not available for the selected time slot.']);
+    }
+
     // Hitung durasi dalam jam
     $duration = $start_time->diffInHours($end_time);
-
-    // Debugging: Log untuk memastikan durasi dan harga per jam benar
-    Log::info('Duration: ' . $duration);
-    Log::info('Room Price per Hour: ' . $room->price);
 
     // Hitung total harga berdasarkan durasi
     $price = $room->price * $duration;
 
-    // Debugging: Lihat hasil perhitungan
-    Log::info('Booking price calculated: ' . $price);
-
-    $bookingId = DB::table('bookings')->insertGetId([
+    $booking = Booking::create([
         'user_id' => Auth::id(),
         'room_id' => $request->room_id,
         'price' => $price,
         'start_time' => $start_time,
         'end_time' => $end_time,
         'status' => 'P', // Pending
-        'created_at' => now(),
-        'updated_at' => now(),
     ]);
 
-    // DB::table('rooms')->where('id', $request->room_id)->update([
-    //     'status' => 'B', // Booked
-    //     'updated_at' => now(),
-    // ]);
-
-    return redirect()->route('payments.create', ['booking_id' => $bookingId]);
+    return redirect()->route('payments.create', ['booking_id' => $booking->id]);
 }
 
     public function destroy(Booking $booking): RedirectResponse

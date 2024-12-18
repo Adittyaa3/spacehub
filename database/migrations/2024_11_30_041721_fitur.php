@@ -59,10 +59,12 @@ return new class extends Migration
             $table->timestamp('start_time')->useCurrent();
             $table->timestamp('end_time')->useCurrent();
             $table->char('status', 1)->default('P');
+
             $table->timestamps();
         });
         
         
+
 
         Schema::create('payments', function (Blueprint $table) {
             $table->id();
