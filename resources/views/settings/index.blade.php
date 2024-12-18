@@ -18,15 +18,15 @@
                         </div>
                         <div class="card-body">
                             @foreach($menus as $menu)
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox"
-                                       name="role_menu[{{ $role->id }}][]"
-                                       value="{{ $menu->id }}"
-                                       @if(isset($roleMenus[$role->id]) && $roleMenus[$role->id]->contains('menu_id', $menu->id)) checked @endif>
-                                <label class="form-check-label" for="role_menu_{{ $role->id }}_{{ $menu->id }}">
-                                    {{ $menu->name }}
-                                </label>
-                            </div>
+
+                                <div class="form-check">
+                                    <input class="form-check-input" type="checkbox" name="role_menu[{{ $role->id }}][]" value="{{ $menu->id }}"
+                                           @if(in_array($menu->id, $roleMenus[$role->id]->pluck('menu_id')->toArray())) checked @endif>
+                                    <label class="form-check-label" for="role_menu_{{ $role->id }}_{{ $menu->id }}">
+                                        {{ $menu->name }}
+                                    </label>
+                                </div>
+
                             @endforeach
                         </div>
                     </div>

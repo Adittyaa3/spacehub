@@ -81,7 +81,7 @@
                             <select class="form-control @error('status') is-invalid @enderror"
                                     id="status" name="status" required>
                                 <option value="A" {{ old('status', $room->status) == 'A' ? 'selected' : '' }}>Available</option>
-                                <option value="B" {{ old('status', $room->status) == 'B' ? 'selected' : '' }}>Booked</option>
+                                <option value="B" {{ old('status', $room->status) == 'B' ? 'selected' : '' }}>Non-Aktif</option>
                             </select>
                         </div>
                     </div>

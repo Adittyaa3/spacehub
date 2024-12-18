@@ -1,4 +1,5 @@
 @php
+
         $userRole = auth()->user()->role_id;
         $currentUrl = request()->url(); // Mendapatkan URL saat ini
 
@@ -51,6 +52,7 @@
                 </li>
             @endforeach
         </ul>
+
     </div>
         <!-- Logout Button at the Bottom -->
         <div class="sidenav-footer mx-3 mt-3 pt-3 border-top">

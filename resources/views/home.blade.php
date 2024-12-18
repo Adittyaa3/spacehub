@@ -499,6 +499,11 @@ Tempat wudhu bersih dengan aliran air yang lancar.
                   <h4> CEO di Solusi Kreatif</h4>
 
                 </div>
+              </div>
+            </div><!-- End testimonial item -->
+
+
+                </div>
                 <div class="footer-section">
                     <h3>Quick Links</h3>
                     <ul>
@@ -562,6 +567,11 @@ Tempat wudhu bersih dengan aliran air yang lancar.
               <i class="bi bi-envelope"></i>
               <h3>Email Us</h3>
               <p>Spacehub@gmail.com</p>
+
+            </div>
+          </div><!-- End Info Item -->
+
+
 
             </div>
         </div>

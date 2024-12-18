@@ -45,7 +45,7 @@
                                 @endif
                             </td>
                             <td>
-                                <p class="text-xs mb-0">{{ $room->status == 'A' ? 'Available' : 'Booked' }}</p>
+                                <p class="text-xs mb-0">{{ $room->status == 'A' ? 'Available' : 'Non-Aktif' }}</p>
                             </td>
                             <td class="text-center">
                                 <a href="{{ route('rooms.edit', $room->id) }}" class="btn btn-sm btn-primary">Edit</a>
