@@ -18,9 +18,6 @@ class AuthController extends Controller
         return view('auth.register');
     }
 
-
-
-
     public function register(Request $request)
     {
         // Validasi inputan
@@ -68,7 +65,7 @@ class AuthController extends Controller
 
         // Cek role user
         if ($user->role_id == 1) {
-            return redirect()->route('user.dashboard'); // Dashboard user
+            return redirect()->route('bookings.showRooms'); // Dashboard user
         } elseif ($user->role_id == 2) {
             return redirect()->route('roles.index'); // Dashboard admin
         }
@@ -93,7 +90,7 @@ class AuthController extends Controller
     }
 
     // ini untuk chart
-    
+
 
 public function chartData()
 {

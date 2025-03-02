@@ -16,6 +16,7 @@ class Booking extends Model
         'start_time' => 'datetime',
         'end_time' => 'datetime',
     ];
+    
 
     public function room(): BelongsTo
     {

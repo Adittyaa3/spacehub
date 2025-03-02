@@ -1,39 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
   <meta charset="utf-8">
   <meta content="width=device-width, initial-scale=1.0" name="viewport">
-  <title>Index - QuickStart Bootstrap Template</title>
+  <title>Spacehub</title>
   <meta name="description" content="">
   <meta name="keywords" content="">
 
-  <link href="{{ asset('assets/img/favicon.png') }}" rel="icon">
-  <link href="{{ asset('assets/img/apple-touch-icon.png') }}" rel="apple-touch-icon">
-  
+  <!-- Favicons -->
+  <link href="{{asset('assets/img/favicon.png')}}" rel="icon">
+  <link href="{{asset('assets/img/apple-touch-icon.png')}}" rel="apple-touch-icon">
+
   <!-- Fonts -->
   <link href="https://fonts.googleapis.com" rel="preconnect">
   <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
-  
-  <!-- Vendor CSS Files -->
-  <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/aos/aos.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/glightbox/css/glightbox.min.css') }}" rel="stylesheet">
-  <link href="{{ asset('assets/vendor/swiper/swiper-bundle.min.css') }}" rel="stylesheet">
-  
-  <!-- Main CSS File -->
-  <link href="{{ asset('assets/css/main.css') }}" rel="stylesheet">
-  
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Nunito:ital,wght@0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 
-  <!-- =======================================================
-  * Template Name: QuickStart
-  * Template URL: https://bootstrapmade.com/quickstart-bootstrap-startup-website-template/
-  * Updated: Aug 07 2024 with Bootstrap v5.3.3
-  * Author: BootstrapMade.com
-  * License: https://bootstrapmade.com/license/
-  ======================================================== -->
+  <!-- Vendor CSS Files -->
+  <link href="{{asset('assets/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/bootstrap-icons/bootstrap-icons.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/aos/aos.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/glightbox/css/glightbox.min.css')}}" rel="stylesheet">
+  <link href="{{asset('assets/vendor/swiper/swiper-bundle.min.css')}}" rel="stylesheet">
+
+  <!-- Main CSS File -->
+  <link href="{{asset('assets/css/main.css')}}" rel="stylesheet">
 </head>
 
 <body class="index-page">
@@ -42,21 +33,21 @@
     <div class="container-fluid container-xl position-relative d-flex align-items-center">
 
       <a href="index.html" class="logo d-flex align-items-center me-auto">
-        {{-- <img src="assets/img/logo.png" alt=""> --}}
-        <h1 class="sitename">SpaceHub</h1>
+        <img src="assets/img/logo.png" alt="">
+        <h1 class="sitename">Spacehub</h1>
       </a>
 
       <nav id="navmenu" class="navmenu">
         <ul>
-          <li><a href="index.html#hero" class="active">Home</a></li>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#features">Facility</a></li>
-          <li><a href="index.html#services">Contact</a></li>
+          <li><a href="/" class="active">Home</a></li>
+          <li><a href="/">Tentang</a></li>
+          <li><a href="/">Fasilitas</a></li>
+          <li><a href="/">Kontak</a></li>
         </ul>
         <i class="mobile-nav-toggle d-xl-none bi bi-list"></i>
       </nav>
 
-      <a class="btn-getstarted" href="{{ url('/login') }}">LOGIN</a>
+      <a class="btn-getstarted" href="{{ url('/login') }}">LOGIN </a>
 
     </div>
   </header>
@@ -66,26 +57,19 @@
     <!-- Hero Section -->
     <section id="hero" class="hero section">
       <div class="hero-bg">
-        {{-- <img src="assets/img/hero-bg-light.webp" alt=""> --}}
+        <img src="assets/img/hero-bg-light.webp" alt="">
       </div>
       <div class="container text-center">
         <div class="d-flex flex-column justify-content-center align-items-center">
           <h1 data-aos="fade-up">Welcome to <span>SpaceHub</span></h1>
-          <p data-aos="fade-up" data-aos-delay="100">Quickly start your project now and Get the room for you needs<br></p>
+          <p data-aos="fade-up" data-aos-delay="100">Booking tempat praktis, nugas jadi lebih fokus. SpaceHub menyediakan ruang ideal untuk belajar, bekerja, dan berkolaborasi!<br></p>
           <div class="d-flex" data-aos="fade-up" data-aos-delay="200">
             <a href="#about" class="btn-get-started">Get Started</a>
           </div>
-          <img src="{{asset('assets/img/spacehub/spacehub.png')}}" class="img-fluid hero-img" alt="" data-aos="zoom-out" data-aos-delay="300" style="transform: scale(2);">
-
+          <img src="{{ asset('assets/img/hero-services-img.webp') }}" class="img-fluid hero-img" alt="" data-aos="zoom-out" data-aos-delay="300">
         </div>
       </div>
-
     </section><!-- /Hero Section -->
-
-    
-        </div>
-
-      </div>
 
     <!-- Featured Services Section -->
     <section id="featured-services" class="featured-services section light-background">
@@ -132,10 +116,9 @@
           <div class="col-lg-6 content" data-aos="fade-up" data-aos-delay="100">
             <p class="who-we-are">Who We Are</p>
             <h3>Tentang SpaceHub</h3>
-            <p class="fst-italic" style="font-size: 30px;">
+            <p class="fst-italic">
               SpaceHub adalah platform inovatif yang dirancang khusus untuk membantu Anda menemukan ruang kerja atau belajar yang nyaman dan kondusif. Kami memahami bahwa produktivitas dimulai dari lingkungan yang tepat. Oleh karena itu, SpaceHub hadir sebagai solusi bagi para pelajar, pekerja, freelancer, dan komunitas yang membutuhkan tempat ideal untuk menyelesaikan tugas, belajar, rapat, atau berkolaborasi.
             </p>
-            
           </div>
 
           <div class="col-lg-6 about-images" data-aos="fade-up" data-aos-delay="200">
@@ -301,17 +284,19 @@
       </div>
     </section><!-- /Features Details Section -->
 
+    <!-- More Features Section -->
+    <section id="more-features" class="more-features section">
+      <!-- Additional features can be added here -->
+    </section><!-- /More Features Section -->
+
     <!-- Testimonials Section -->
     <section id="testimonials" class="testimonials section light-background">
-
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
         <h2>Testimonials</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <p>Berikut Testimoni dari pelanggan</p>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="swiper init-swiper">
           <script type="application/json" class="swiper-config">
             {
@@ -339,18 +324,18 @@
             }
           </script>
           <div class="swiper-wrapper">
-
             <div class="swiper-slide">
               <div class="testimonial-item">
                 <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
+                  <i class="bi bi ```html
+                  star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
+                  "Spacehub telah menjadi tempat yang sangat membantu bagi tim kami dikala meeting atau pertemuan penting lainnya"
                 </p>
                 <div class="mt-auto profile">
-                  <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
-                  <h3>Saul Goodman</h3>
+                  <img src="assets/img/user.jpg" class="testimonial-img" alt="">
+                  <h3>Rina</h3>
                   <h4>Ceo &amp; Founder</h4>
                 </div>
               </div>
@@ -362,11 +347,11 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
+                  "Sebagai seorang freelancer yang membutuhkan ruang untuk bekerja dan berkolaborasi, Spacehub memberikan pilihan tempat yang sangat ideal. Training Room yang lengkap dengan fasilitas modern dan suasana yang tenang membantu saya lebih fokus dalam sesi pelatihan."
                 </p>
                 <div class="mt-auto profile">
-                  <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
-                  <h3>Sara Wilsson</h3>
+                  <img src="assets/img/user.jpg" class="testimonial-img" alt="">
+                  <h3>Sarah</h3>
                   <h4>Designer</h4>
                 </div>
               </div>
@@ -378,11 +363,11 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Enim nisi quem export duis labore cillum quae magna enim sint quorum nulla quem veniam duis minim tempor labore quem eram duis noster aute amet eram fore quis sint minim.
+                  "Spacehub sangat memudahkan kami dalam menyelenggarakan acara pelatihan internal. Ruangannya fleksibel dan dapat disesuaikan dengan jumlah peserta, serta didukung oleh fasilitas yang memadai. Kami sangat puas dengan layanan dan kenyamanan yang diberikan."
                 </p>
                 <div class="mt-auto profile">
-                  <img src="assets/img/testimonials/testimonials-3.jpg" class="testimonial-img" alt="">
-                  <h3>Jena Karlis</h3>
+                  <img src="assets/img/user.jpg" class="testimonial-img" alt="">
+                  <h3>Jeni Romansa</h3>
                   <h4>Store Owner</h4>
                 </div>
               </div>
@@ -394,66 +379,41 @@
                   <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
                 </div>
                 <p>
-                  Fugiat enim eram quae cillum dolore dolor amet nulla culpa multos export minim fugiat minim velit minim dolor enim duis veniam ipsum anim magna sunt elit fore quem dolore labore illum veniam.
+                  "Saya sudah beberapa kali memesan ruang untuk meeting di Spacehub, dan setiap kali merasa puas dengan kualitas layanan dan fasilitasnya. Proyektor dan sistem audio yang disediakan membuat presentasi saya lebih profesional dan berjalan lancar. Proses pemesanan sangat mudah, dan konfirmasi instan membuat saya tidak perlu khawatir."
                 </p>
                 <div class="mt-auto profile">
-                  <img src="assets/img/testimonials/testimonials-4.jpg" class="testimonial-img" alt="">
-                  <h3>Matt Brandon</h3>
-                  <h4>Freelancer</h4>
+                  <img src="assets/img/user.jpg" class="testimonial-img" alt="">
+                  <h3>Diana</h3>
+                  <h4>CEO di Solusi Kreatif</h4>
                 </div>
               </div>
             </div><!-- End testimonial item -->
-
-            <div class="swiper-slide">
-              <div class="testimonial-item">
-                <div class="stars">
-                  <i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i><i class="bi bi-star-fill"></i>
-                </div>
-                <p>
-                  Quis quorum aliqua sint quem legam fore sunt eram irure aliqua veniam tempor noster veniam enim culpa labore duis sunt culpa nulla illum cillum fugiat legam esse veniam culpa fore nisi cillum quid.
-                </p>
-                <div class="mt-auto profile">
-                  <img src="assets/img/testimonials/testimonials-5.jpg" class="testimonial-img" alt="">
-                  <h3>John Larson</h3>
-                  <h4>Entrepreneur</h4>
-                </div>
-              </div>
-            </div><!-- End testimonial item -->
-
           </div>
           <div class="swiper-pagination"></div>
         </div>
-
       </div>
-
     </section><!-- /Testimonials Section -->
 
     <!-- Contact Section -->
     <section id="contact" class="contact section">
-
-      <!-- Section Title -->
       <div class="container section-title" data-aos="fade-up">
-        <h2>Contact</h2>
-        <p>Necessitatibus eius consequatur ex aliquid fuga eum quidem sint consectetur velit</p>
+        <h2>Kontak</h2>
       </div><!-- End Section Title -->
 
       <div class="container" data-aos="fade-up" data-aos-delay="100">
-
         <div class="row gy-4">
-
           <div class="col-lg-6">
             <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="200">
               <i class="bi bi-geo-alt"></i>
               <h3>Address</h3>
-              <p>A108 Adam Street, New York, NY 535022</p>
+              <p>Jl. Airlangga No.4 - 6, Airlangga, Kec. Gubeng, Surabaya, Jawa Timur 60115</p>
             </div>
-          </div><!-- End Info Item -->
-
+          </div><!-- End Info ```html
           <div class="col-lg-3 col-md-6">
             <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="300">
               <i class="bi bi-telephone"></i>
               <h3>Call Us</h3>
-              <p>+1 5589 55488 55</p>
+              <p>087781160585</p>
             </div>
           </div><!-- End Info Item -->
 
@@ -461,71 +421,50 @@
             <div class="info-item d-flex flex-column justify-content-center align-items-center" data-aos="fade-up" data-aos-delay="400">
               <i class="bi bi-envelope"></i>
               <h3>Email Us</h3>
-              <p>info@example.com</p>
+              <p>Spacehub@gmail.com</p>
             </div>
           </div><!-- End Info Item -->
-
         </div>
+      </div>
 
-        <div class="mt-1 row gy-4">
-          <div class="col-lg-6" data-aos="fade-up" data-aos-delay="300">
-            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3581.562034547605!2d112.78166467454605!3d-7.268710871420465!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2dd7fa21a3515291%3A0x3edf1522ff735924!2sUniversitas%20Airlangga%20-%20Kampus%20MERR%20C!5e1!3m2!1sid!2sid!4v1739883383817!5m2!1sid!2sid" frameborder="0" style="border:0; width: 100%; height: 400px;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-          </div><!-- End Google Maps -->
-
-          <div class="col-lg-6">
-            <form action="forms/contact.php" method="post" class="php-email-form" data-aos="fade-up" data-aos-delay="400">
-              <div class="row gy-4">
-
-                <div class="col-md-6">
-                  <input type="text" name="name" class="form-control" placeholder="Your Name" required="">
-                </div>
-
-                <div class="col-md-6 ">
-                  <input type="email" class="form-control" name="email" placeholder="Your Email" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <input type="text" class="form-control" name="subject" placeholder="Subject" required="">
-                </div>
-
-                <div class="col-md-12">
-                  <textarea class="form-control" name="message" rows="6" placeholder="Message" required=""></textarea>
-                </div>
-
-                <div class="text-center col-md-12">
-                  <div class="loading">Loading</div>
-                  <div class="error-message"></div>
-                  <div class="sent-message">Your message has been sent. Thank you!</div>
-
-                  <button type="submit">Send Message</button>
-                </div>
-
-              </div>
-            </form>
-          </div><!-- End Contact Form -->
-
+      <div id="bookingModal" class="modal">
+        <div class="modal-content">
+          <span class="close">&times;</span>
+          <h2>Book Your Space</h2>
+          <form id="bookingForm" class="booking-form">
+            <label for="spaceName">Space:</label>
+            <input type="text" id="spaceName" readonly>
+            <label for="date">Date:</label>
+            <input type="date" id="date" required>
+            <label for="time">Time:</label>
+            <input type="time" id="time" required>
+            <label for="duration">Duration (hours):</label>
+            <select id="duration" required>
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+            <button type="submit">Confirm Booking</button>
+          </form>
         </div>
-
       </div>
 
     </section><!-- /Contact Section -->
 
   </main>
 
-  {{-- <footer id="footer" class="footer position-relative light-background">
-
+  <footer id="footer" class="footer position-relative light-background">
     <div class="container footer-top">
       <div class="row gy-4">
         <div class="col-lg-4 col-md-6 footer-about">
           <a href="index.html" class="logo d-flex align-items-center">
-            <span class="sitename">QuickStart</span>
+            <span class="sitename">Spacehub</span>
           </a>
           <div class="pt-3 footer-contact">
-            <p>A108 Adam Street</p>
-            <p>New York, NY 535022</p>
-            <p class="mt-3"><strong>Phone:</strong> <span>+1 5589 55488 55</span></p>
-            <p><strong>Email:</strong> <span>info@example.com</span></p>
+            <p>Jl. Airlangga No.4 - 6, Airlangga, Kec. Gubeng, Surabaya, Jawa Timur 60115</p>
+            <p class="mt-3"><strong>Phone:</strong> <span>87781160585</span></p>
+            <p><strong>Email:</strong> <span>Spacehub@gmail.com</span></p>
           </div>
           <div class="mt-4 social-links d-flex">
             <a href=""><i class="bi bi-twitter-x"></i></a>
@@ -561,46 +500,89 @@
           <h4>Our Newsletter</h4>
           <p>Subscribe to our newsletter and receive the latest news about our products and services!</p>
           <form action="forms/newsletter.php" method="post" class="php-email-form">
-            <div class="newsletter-form"><input type="email" name="email"><input type="submit" value="Subscribe"></div>
+            <div class="newsletter-form"><input type="email" name="email ```html
+            "><input type="submit" value="Subscribe"></div>
             <div class="loading">Loading</div>
             <div class="error-message"></div>
             <div class="sent-message">Your subscription request has been sent. Thank you!</div>
           </form>
         </div>
-
       </div>
     </div>
 
     <div class="container mt-4 text-center copyright">
-      <p>© <span>Copyright</span> <strong class="px-1 sitename">QuickStart</strong><span>All Rights Reserved</span></p>
+      <p>© <span>Copyright</span> <strong class="px-1 sitename">Spacehub</strong><span>All Rights Reserved</span></p>
       <div class="credits">
-        <!-- All the links in the footer should remain intact. -->
-        <!-- You can delete the links only if you've purchased the pro version. -->
-        <!-- Licensing information: https://bootstrapmade.com/license/ -->
-        <!-- Purchase the pro version with working PHP/AJAX contact form: [buy-url] -->
         Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
       </div>
     </div>
 
-  </footer> --}}
+    <script src="https://kit.fontawesome.com/your-fontawesome-kit.js" crossorigin="anonymous"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // JavaScript for mobile menu toggle
+            const navLinks = document.querySelector('.nav-links');
+            const menuToggle = document.querySelector('.menu-toggle');
 
-  <!-- Scroll Top -->
-  <a href="#" id="scroll-top" class="scroll-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+            if (menuToggle) {
+                menuToggle.addEventListener('click', function() {
+                    navLinks.classList.toggle('active');
+                });
+            }
 
-  <!-- Preloader -->
-  <div id="preloader"></div>
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    document.querySelector(this.getAttribute('href')).scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                });
+            });
 
-<!-- Vendor JS Files -->
-<script src="{{ asset('assets/vendor/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-<script src="{{ asset('assets/vendor/php-email-form/validate.js') }}"></script>
-<script src="{{ asset('assets/vendor/aos/aos.js') }}"></script>
-<script src="{{ asset('assets/vendor/glightbox/js/glightbox.min.js') }}"></script>
-<script src="{{ asset('assets/vendor/swiper/swiper-bundle.min.js') }}"></script>
+            // Booking modal functionality
+            const modal = document.getElementById('bookingModal');
+            const bookBtns = document.querySelectorAll('.book-btn');
+            const closeBtn = document.querySelector('.close');
+            const bookingForm = document.getElementById('bookingForm');
+            const spaceNameInput = document.getElementById('spaceName');
 
-<!-- Main JS File -->
-<script src="{{ asset('assets/js/main.js') }}"></script>
+            if (bookBtns.length > 0) {
+                bookBtns.forEach(btn => {
+                    btn.addEventListener('click', (e) => {
+                        e.preventDefault();
+                        modal.style.display = 'block';
+                        spaceNameInput.value = btn.getAttribute('data-space');
+                    });
+                });
+            }
 
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
+                    modal.style.display = 'none';
+                });
+            }
 
+            window.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+
+            if (bookingForm) {
+                bookingForm.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    const space = spaceNameInput.value;
+                    const date = document.getElementById('date').value;
+                    const time = document.getElementById('time').value;
+                    const duration = document.getElementById('duration').value;
+
+                    alert(`Booking confirmed for ${space} on ${date} at ${time} for ${duration} hour(s).`);
+                    modal.style.display = 'none';
+                    bookingForm.reset();
+                });
+            }
+        });
+    </script>
 </body>
-
 </html>

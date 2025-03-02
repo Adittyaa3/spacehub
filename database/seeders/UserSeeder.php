@@ -14,7 +14,7 @@ class UserSeeder extends Seeder
             'name' => 'adit',
             'email' => 'adit@gmail.com',
             'password' => Hash::make('12345678'),  // Pastikan menggunakan hash untuk password
-            'role_id' => 1,  // Menggunakan role_id = 1 untuk user biasa
+            'role_id' => 2,  // Menggunakan role_id = 1 untuk user biasa
             'created_at' => now(),
             'updated_at' => now(),
         ]);
@@ -23,7 +23,7 @@ class UserSeeder extends Seeder
         'name' => 'admin',
         'email' => 'admin@gmail.com',
         'password' => Hash::make('12345678'),  // Pastikan menggunakan hash untuk password
-        'role_id' => 2,  // Menggunakan role_id = 1 untuk user biasa
+        'role_id' => 1,  // a
         'created_at' => now(),
         'updated_at' => now(),
     ]);

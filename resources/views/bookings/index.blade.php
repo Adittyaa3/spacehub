@@ -39,7 +39,10 @@
                             <form action="{{ route('bookings.destroy', $booking->id) }}" method="POST" class="d-inline">
                                 @csrf
                                 @method('DELETE')
-                                {{-- <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Delete</button> --}}
+                                @if ($booking->status == 'P')
+                                    <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('Are you sure?')">Cancel</button>
+
+                                @endif 
                             </form>
                         @endif
                     </div>

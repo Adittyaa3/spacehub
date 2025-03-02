@@ -13,12 +13,6 @@
 </div>
 
         <ul class="navbar-nav justify-content-end" style="margin-top:17px">
-            <li class="nav-item d-flex align-items-center">
-                <form action="{{ route('logout') }}" method="POST">
-                    @csrf
-                    <button type="submit" class="btn btn-danger">Logout</button>
-                </form>
-            </li>
             <li class="nav-item d-xl-none ps-3 d-flex align-items-center">
                 <a href="javascript:;" class="nav-link text-white p-0" id="iconNavbarSidenav">
                     <div class="sidenav-toggler-inner">
