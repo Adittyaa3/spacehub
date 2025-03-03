@@ -151,7 +151,7 @@ public function storeBooking(Request $request)
 
     public function indexbookinglist()
     {
-        $bookings = Booking::where('status', 'c')->get();
+        $bookings = Booking::where('status', 'C')->get();
         return view('bookings.indexbookinglist', compact('bookings'));
     }
 

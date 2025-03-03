@@ -13,7 +13,7 @@ class RoleController extends Controller
         return view('role.index',compact('roles'));
     }
     public function create(){
-        return view('role.create');
+        return view('role.index');
     }
 
     public function store(Request $request)

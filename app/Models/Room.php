@@ -8,9 +8,11 @@ use App\Models\Category;
 use App\Models\User;
 use App\Models\Booking;
 use Illuminate\Database\Eloquent\Relations\HasMany;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class Room extends Model
 {
+    use HasFactory;
     protected $fillable = [
         'name',
         'description',
